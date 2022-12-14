@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">Capsuls_App</string>
+    <string-array name="diseses">
+        <item>Diabetes</item>
+        <item>Cancer</item>
+        <item>Pressure</item>
+        <item>Heart disease</item>
+        <item>Others</item>
+    </string-array>
 </resources>

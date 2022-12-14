@@ -9,54 +9,83 @@
     android:padding="0dp"
     android:background="@drawable/dg4"
     tools:context="._4Main_Activity">
-    <ImageView
+    <com.beardedhen.androidbootstrap.BootstrapThumbnail
         android:layout_width="match_parent"
-        android:layout_height="180dp"
-        android:layout_marginTop="35dp"
+        android:layout_height="210dp"
+        android:layout_margin="35dp"
         android:src="@drawable/logo"
+        app:bootstrapBrand="danger"
+        app:hasBorder="true"
         />
-
     <GridLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="400dp"
+        android:layout_marginTop="20dp"
         android:columnCount="2"
         android:rowCount="2"
         android:padding="15pt">
-        <Button
-            android:id="@+id/b1"
-            android:layout_gravity="fill"
-            android:layout_rowWeight="1"
+
+        <com.beardedhen.androidbootstrap.BootstrapButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:bootstrapBrand="success"
+            app:bootstrapSize="lg"
+            app:buttonMode="regular"
             android:layout_margin="15dp"
-            android:background="#fff"
+            app:showOutline="false"
+            app:roundedCorners="true"
             android:text="Create Order"
             android:onClick="CreateOrder"
-            android:layout_columnWeight="1"/>
-        <Button
-            android:id="@+id/b2"
             android:layout_gravity="fill"
             android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            />
+
+        <com.beardedhen.androidbootstrap.BootstrapButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:bootstrapBrand="primary"
+            app:bootstrapSize="lg"
+            app:buttonMode="regular"
             android:layout_margin="15dp"
-            android:background="#fff"
+            app:showOutline="false"
+            app:roundedCorners="true"
             android:text="My Orders"
             android:onClick="History"
-            android:layout_columnWeight="1"/>
-        <Button
-            android:id="@+id/b3"
             android:layout_gravity="fill"
             android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            />
+        <com.beardedhen.androidbootstrap.BootstrapButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:bootstrapBrand="warning"
+            app:bootstrapSize="lg"
+            app:buttonMode="regular"
             android:layout_margin="15dp"
-            android:background="#fff"
+            app:showOutline="false"
+            app:roundedCorners="true"
             android:text="Edit Profile"
             android:onClick="EditProfile"
-            android:layout_columnWeight="1"/>
-        <Button
-            android:id="@+id/b4"
             android:layout_gravity="fill"
             android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            />
+        <com.beardedhen.androidbootstrap.BootstrapButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:bootstrapBrand="danger"
+            app:bootstrapSize="lg"
+            app:buttonMode="regular"
             android:layout_margin="15dp"
-            android:background="#fff"
+            app:showOutline="false"
+            app:roundedCorners="true"
             android:onClick="Logout"
             android:text="Logout"
-            android:layout_columnWeight="1"/>
+            android:layout_gravity="fill"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            />
+
     </GridLayout>
 </LinearLayout>

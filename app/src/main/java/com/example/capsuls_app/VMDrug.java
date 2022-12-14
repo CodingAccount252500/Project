@@ -1,8 +1,8 @@
 package com.example.capsuls_app;
-/*import com.google.firebase.database.IgnoreExtraProperties;
+import com.google.firebase.database.IgnoreExtraProperties;
 
 
-@IgnoreExtraProperties*/
+@IgnoreExtraProperties
 public class VMDrug {
     public String Name;
     public String Description;

@@ -33,10 +33,10 @@ import com.google.firebase.storage.UploadTask;
 
 public class _5Profile extends AppCompatActivity {
     public ImageView userImage;
-    public BootstrapButton uploadImage;
-    public BootstrapEditText PhoneNumber,Name;
-    public  String phones;
+    public BootstrapEditText PhoneNumber,Name,Pio;
+    public  String phones,namePatient,pioPatient;
     public Uri imageUri;
+    public BootstrapButton uploadImage;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,6 +44,7 @@ public class _5Profile extends AppCompatActivity {
         uploadImage=findViewById(R.id.uploadProfileImage);
         userImage=findViewById(R.id.profile_image);
         Name = findViewById(R.id.name);
+        Pio  = findViewById(R.id.pioODescription);
         PhoneNumber=findViewById(R.id.phone);
         uploadImage.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -65,9 +66,12 @@ public class _5Profile extends AppCompatActivity {
         }
         PhoneNumber.setText(_2Login.currentUser.PhoneNumber);
         Name.setText(_2Login.currentUser.Name);
+        Pio.setText(_2Login.currentUser.MedicalRecord);
     }
     public void UpdateProfile(View view) {
         phones=PhoneNumber.getText().toString();
+        pioPatient=Pio.getText().toString();
+        namePatient=Name.getText().toString();
         //Fetch User Info By Object Id
         FirebaseApp.initializeApp(_5Profile.this);
         DatabaseReference DbRef = FirebaseDatabase.getInstance().getReference().child("User");
@@ -84,6 +88,8 @@ public class _5Profile extends AppCompatActivity {
                     if (fetchedItem.Email.equals(_2Login.currentUser.Email)) {
                         if(imageUri==null){
                             DbRef.child(user.getKey()) .child("Phone").setValue(phones);
+                            DbRef.child(user.getKey()) .child("MedicalRecord").setValue(pioPatient);
+                            DbRef.child(user.getKey()) .child("Name").setValue(namePatient);
                             Toast.makeText(getApplicationContext(), "Done", Toast.LENGTH_SHORT).show();
                             finish();
                         }else{
@@ -97,6 +103,8 @@ public class _5Profile extends AppCompatActivity {
                                         public void onSuccess(Uri uri) {
                                             DbRef.child(user.getKey()) .child("ProfileImagePath").setValue(uri.toString());
                                             DbRef.child(user.getKey()) .child("Phone").setValue(phones);
+                                            DbRef.child(user.getKey()) .child("MedicalRecord").setValue(pioPatient);
+                                            DbRef.child(user.getKey()) .child("Name").setValue(namePatient);
                                             Toast.makeText(getApplicationContext(), "Done", Toast.LENGTH_SHORT).show();
                                             finish();
 
@@ -149,4 +157,5 @@ public class _5Profile extends AppCompatActivity {
         return mimeTypeMap.getExtensionFromMimeType(mContentResolver.getType(muri));
 
     }
+
 }

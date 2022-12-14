@@ -12,7 +12,6 @@ import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.view.View;
-import android.view.Window;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -33,12 +32,12 @@ public class _4Main_Activity extends AppCompatActivity implements LocationListen
     public void CreateOrder(View view) {
         getLocation();
 
-        Intent moving=new Intent(_4Main_Activity.this,_8NewOrder.class);
+        Intent moving=new Intent(_4Main_Activity.this, _7NewOrder.class);
         startActivity(moving);
     }
 
     public void History(View view) {
-        Intent moving=new Intent(_4Main_Activity.this,_12OrderLists.class);
+        Intent moving=new Intent(_4Main_Activity.this,_6History.class);
         startActivity(moving);
     }
 
@@ -66,16 +65,8 @@ public class _4Main_Activity extends AppCompatActivity implements LocationListen
 
     @Override
     public void onLocationChanged(@NonNull Location location) {
-        DatabaseReference DbRef = FirebaseDatabase.getInstance().getReference().child("User");
-        //Toast.makeText(MainScreen.this, location.getLatitude()+""+location.getLongitude(), Toast.LENGTH_SHORT).show();
         lat=location.getLatitude();
         lon=location.getLongitude();
-        try {
-            Geocoder myGeocoder=new Geocoder(_4Main_Activity.this, Locale.getDefault());
-            List<Address> addressList=myGeocoder.getFromLocation(location.getLatitude(),location.getLongitude(),1);
-            String currentAddress=addressList.get(0).getAddressLine(0);
-        }catch (Exception e){
-            e.printStackTrace();
-        }
+
     }
 }

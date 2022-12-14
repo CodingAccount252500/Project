@@ -1,17 +1,17 @@
 package com.example.capsuls_app;
-/*import com.google.firebase.database.IgnoreExtraProperties;
+import com.google.firebase.database.IgnoreExtraProperties;
 
 
-@IgnoreExtraProperties*/
+@IgnoreExtraProperties
 public class VMPrescriptionDrug {
     public String DrugId;
-    public String Prescription;
+    public String OrderId;
     public String Note;
     public int    Quantity;
 
-    public VMPrescriptionDrug(String drugId, String prescription, String note, int quantity) {
+    public VMPrescriptionDrug(String drugId, String orderId, String note, int quantity) {
         DrugId = drugId;
-        Prescription = prescription;
+        OrderId = orderId;
         Note = note;
         Quantity = quantity;
     }

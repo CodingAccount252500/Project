@@ -16,14 +16,14 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 
-public class _15ResetPassword extends AppCompatActivity {
+public class _12ResetPassword extends AppCompatActivity {
     FirebaseAuth firebaseAuth;
     FirebaseUser user;
     public BootstrapEditText userEmail;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_15_reset_password);
+        setContentView(R.layout.activity_12_reset_password);
         userEmail = findViewById(R.id.ResetEmailField);
         firebaseAuth= FirebaseAuth.getInstance();
         user=firebaseAuth.getCurrentUser();
@@ -41,7 +41,7 @@ public class _15ResetPassword extends AppCompatActivity {
 
                         Toast.makeText(getApplicationContext(),"Check For your E-mail" , Toast.LENGTH_SHORT).show();
                         finish();
-                        startActivity(new Intent(_15ResetPassword.this,_2Login.class));
+                        startActivity(new Intent(_12ResetPassword.this,_2Login.class));
 
                     }else {
                         Toast.makeText(getApplicationContext(),"Error with your email" , Toast.LENGTH_SHORT).show();

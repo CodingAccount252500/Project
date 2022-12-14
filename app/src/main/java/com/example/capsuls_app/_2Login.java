@@ -6,9 +6,7 @@ import android.content.Intent;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.view.Window;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -57,7 +55,7 @@ public class _2Login extends AppCompatActivity {
     }
 
     public void OnResetClicked(View view) {
-        Intent moveToCreateAccount=new Intent(_2Login.this,_15ResetPassword.class);
+        Intent moveToCreateAccount=new Intent(_2Login.this, _12ResetPassword.class);
         startActivity(moveToCreateAccount);
     }
     public void OnLoginButtonClicked(View view) {
@@ -87,7 +85,7 @@ public class _2Login extends AppCompatActivity {
                                 if(currentUser.AccountTypeId.toLowerCase()=="user"){
                                     MoveBetweenScreens(_2Login.this,_4Main_Activity.class);
                                 }else if(currentUser.AccountTypeId.toLowerCase()=="employee"){
-                                    MoveBetweenScreens(_2Login.this,_14OrderDelivery.class);
+                                    //MoveBetweenScreens(_2Login.this,_14OrderDelivery.class);
                                 }else{
                                     Toast.makeText(_2Login.this, "Error While Login", Toast.LENGTH_LONG).show();
                                 }

@@ -21,17 +21,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
-
-        <de.hdodenhof.circleimageview.CircleImageView
-            xmlns:app="http://schemas.android.com/apk/res-auto"
+        <com.beardedhen.androidbootstrap.BootstrapThumbnail
             android:id="@+id/profile_image"
             android:layout_width="145dp"
+            android:src="@drawable/pdfflat"
             android:layout_height="150dp"
-            android:layout_marginLeft="15dp"
-            android:src="@drawable/man"
-            app:civ_border_width="2dp"
-            android:layout_gravity="center_horizontal"
-            app:civ_border_color="#FF000000"/>
+            app:bootstrapBrand="info"
+            app:hasBorder="true"
+            />
+
         <com.beardedhen.androidbootstrap.BootstrapButton
             android:id="@+id/uploadProfileImage"
             android:layout_width="185dp"
@@ -55,60 +53,29 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="9dp"
             android:layout_marginLeft="5dp"
-            android:text="Name :"
+            android:text="Delivery Date"
             android:textStyle="bold"
             android:textSize="9pt"
-
             android:textColor="#130400" />
 
-        <com.beardedhen.androidbootstrap.BootstrapEditText
-            android:id="@+id/name"
+        <EditText
+            android:id="@+id/editTextGetDate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:inputType="phone"
-            android:textColor="#130400"
-            app:bootstrapBrand="info"
-            app:bootstrapSize="xl"
+            android:layout_marginTop="15dp"
+            android:ems="10"
+            android:textAlignment="center"
+            android:hint="Pick Delivery Date" />
 
-            />
 
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="0dp">
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="9dp"
             android:layout_marginLeft="5dp"
-            android:text="Phone Number:"
-            android:textStyle="bold"
-            android:textSize="9pt"
-
-            android:textColor="#130400" />
-
-        <com.beardedhen.androidbootstrap.BootstrapEditText
-            android:id="@+id/phone"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:inputType="phone"
-            android:textColor="#130400"
-            app:bootstrapBrand="info"
-            app:bootstrapSize="xl"
-
-            />
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
-            android:layout_marginLeft="5dp"
-            android:text="Pio :"
+            android:text="Note:"
             android:textStyle="bold"
             android:textSize="9pt"
 
@@ -129,8 +96,28 @@
                 />
         </com.beardedhen.androidbootstrap.BootstrapWell>
 
-    </LinearLayout>
 
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ToggleButton
+            android:id="@+id/locationToggle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="40dp"
+            android:text="Get Current Location"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="40dp"
+            android:layout_marginLeft="10dp"
+            android:text="Get Current Location"
+            android:textSize="22dp" />
+    </LinearLayout>
     <com.beardedhen.androidbootstrap.BootstrapButton
         android:id="@+id/continueRegistrationButton"
         android:layout_width="290dp"
@@ -138,8 +125,8 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="30dp"
         android:backgroundTint="#130400"
-        android:text="Update"
-        android:onClick="UpdateProfile"
+        android:text="Continue"
+        android:onClick="StartNewOrder"
         android:textStyle="bold|italic"
         app:bootstrapSize="xl"
         app:buttonMode="regular"

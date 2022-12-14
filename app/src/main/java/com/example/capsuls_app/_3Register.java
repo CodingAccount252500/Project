@@ -8,6 +8,9 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 
@@ -26,12 +29,32 @@ public class _3Register extends AppCompatActivity {
     public FirebaseAuth mAuth;
     public DatabaseReference databaseReference;
     public ProgressDialog progressDialog;
+    public Spinner diseaseType;
+    public ArrayAdapter spinnerAdapter;
+    public String diseaseTypeString;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_3_register);
         DefineAllScreenObject();
+        diseaseType=findViewById(R.id.spn_trainType2);
+        String [] categorySpinnerItems=getResources().getStringArray(R.array.diseses);
+        spinnerAdapter =
+                new ArrayAdapter(_3Register.this,android.R.layout.simple_spinner_item,categorySpinnerItems);
+        spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        diseaseType.setAdapter(spinnerAdapter);
+        diseaseType.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                diseaseTypeString=categorySpinnerItems[position];
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                diseaseTypeString = "";
+            }
+        });
     }
     public void OnContinueSignUpEvent(View view) {
         FirebaseApp.initializeApp(_3Register.this);
@@ -62,12 +85,11 @@ public class _3Register extends AppCompatActivity {
                                     @Override
                                     public void onComplete(@NonNull Task<Void> task) {
                                         if(task.isSuccessful()){
-                                            VMUsers person=new VMUsers(name,email,phone,0.0,0.0,ssn,false,"",gender,age,"user",password);
+                                            VMUsers person=new VMUsers(name,email,phone,0.0,0.0,ssn,false,"",gender,age,"user",password,diseaseTypeString,false,"");
                                             databaseReference.child("User").push().setValue(person);
                                             progressDialog.hide();
                                             Toast.makeText(getApplicationContext(), "Please Verify Your email ✌️ ", Toast.LENGTH_SHORT).show();
                                             finish();
-
                                         }
                                     }
                                 });
@@ -77,16 +99,11 @@ public class _3Register extends AppCompatActivity {
                                 Log.w("Data", "createUserWithEmail:failure", task.getException());
                                 Toast.makeText(getApplicationContext(), "Authentication failed."+task.getException(),
                                         Toast.LENGTH_LONG).show();
-
-
                             }
                         }
                     });
-
-
         }
     }
-
     public void DefineAllScreenObject() {
         userName=findViewById(R.id.newUserNameField);
         userPhone=findViewById(R.id.newUserPhoneField);

@@ -35,7 +35,9 @@ import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 
@@ -50,6 +52,8 @@ public class _7NewOrder extends AppCompatActivity implements LocationListener {
     ToggleButton toggle ;
     String date,note;
     boolean isLocationToggle;
+    public  static  VMOrder currentOrder;
+    public  static  String  createdOrderId;
 
     @SuppressLint("MissingPermission")
     private void getLocation() {
@@ -72,6 +76,7 @@ public class _7NewOrder extends AppCompatActivity implements LocationListener {
         setContentView(R.layout.activity_7_new_order);
         eText=(EditText) findViewById(R.id.editTextGetDate);
         toggle = (ToggleButton) findViewById(R.id.locationToggle);
+        editTextPio = findViewById(R.id.pioODescription);
         eText.setInputType(InputType.TYPE_NULL);
         isLocationToggle=false;
         eText.setOnClickListener(new View.OnClickListener() {
@@ -132,27 +137,11 @@ public class _7NewOrder extends AppCompatActivity implements LocationListener {
                     fileUploadingReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                         @Override
                         public void onSuccess(Uri uri) {
-
-
-                            /*if(type.equals("")){
-                                Toast.makeText(getApplicationContext(), "Please Enter Valid Report Type", Toast.LENGTH_SHORT).show();
-                            }else{
-                                //After Image Is getting Then Create object then Upload data to firebase
-                                Report aseReport=new Report(type,simpleSwitch.isChecked(),MainScreen.lat,MainScreen.lon
-                                        ,_0CheckAccount.userId,uri.toString(),notes,false,"","Pending");
-
-                                FirebaseDatabase.getInstance().getReference().child("Report").push().setValue(aseReport)
-                                        .addOnSuccessListener(new OnSuccessListener<Void>() {
-                                            @Override
-                                            public void onSuccess(Void unused) {
-
-                                                Intent backToHome=new Intent(getApplicationContext(),MainScreen.class);
-                                                startActivity(backToHome);
-                                            }
-                                        });
-                                Toast.makeText(getApplicationContext(), "Created Successfully Operation Success ", Toast.LENGTH_SHORT).show();
-                            }*/
-
+                              currentOrder = new VMOrder(lat,lon,uri.toString(),false,note,""
+                            ,"UnCompleted",date,new HashMap<String,Integer>(),_2Login.currentUserId);
+                            Toast.makeText(getApplicationContext(), "Please Select Your Needs", Toast.LENGTH_SHORT).show();
+                            Intent goToSaveOrder=new Intent(getApplicationContext(),_8SelectDrugs.class);
+                            startActivity(goToSaveOrder);
                         }
                     });
                 }
@@ -178,7 +167,6 @@ public class _7NewOrder extends AppCompatActivity implements LocationListener {
             try {
                 imageUri=data.getData();
                 //userImage.setImageURI(imageUri);
-
             }catch (Exception exception){
 
             }

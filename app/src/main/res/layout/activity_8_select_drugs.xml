@@ -1,13 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="@color/white"
-    tools:context="._5Profile">
-
+    android:orientation="vertical"
+    tools:context="._8SelectDrugs">
+    <include
+        layout="@layout/user_sub_screen_action_bar"/>
+    <ListView
+        android:id="@+id/ItemsList"
+        android:layout_width="match_parent"
+        android:layout_margin="12dp"
+        android:layout_height="550dp"/>
+    <com.beardedhen.androidbootstrap.BootstrapButton
+        android:id="@+id/continueRegistrationButton"
+        android:layout_width="290dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="30dp"
+        android:backgroundTint="#130400"
+        android:text="Submit Order"
+        android:onClick="onCheckOutDoneClicked"
+        android:textStyle="bold|italic"
+        app:bootstrapSize="xl"
+        app:buttonMode="regular"
+        app:roundedCorners="true"
+        app:showOutline="false" />
 </LinearLayout>

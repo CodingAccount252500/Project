@@ -25,13 +25,13 @@ import com.google.firebase.database.FirebaseDatabase;
 
 
 public class _3Register extends AppCompatActivity {
-    public BootstrapEditText userName,userEmail,userPhone,userSSN,userPassword,userAge,userGender;
+    public BootstrapEditText userName,userEmail,userPhone,userSSN,userPassword,userAge;
     public FirebaseAuth mAuth;
     public DatabaseReference databaseReference;
     public ProgressDialog progressDialog;
-    public Spinner diseaseType;
-    public ArrayAdapter spinnerAdapter;
-    public String diseaseTypeString;
+    public Spinner diseaseType,genderType;
+    public ArrayAdapter spinnerAdapter,spinner2Adapter;
+    public String diseaseTypeString,userGender;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,7 +39,9 @@ public class _3Register extends AppCompatActivity {
         setContentView(R.layout.activity_3_register);
         DefineAllScreenObject();
         diseaseType=findViewById(R.id.spn_trainType2);
+        genderType=findViewById(R.id.genderField);
         String [] categorySpinnerItems=getResources().getStringArray(R.array.diseses);
+        String [] gendersType=getResources().getStringArray(R.array.gender);
         spinnerAdapter =
                 new ArrayAdapter(_3Register.this,android.R.layout.simple_spinner_item,categorySpinnerItems);
         spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -55,6 +57,21 @@ public class _3Register extends AppCompatActivity {
                 diseaseTypeString = "";
             }
         });
+        spinner2Adapter =
+                new ArrayAdapter(_3Register.this,android.R.layout.simple_spinner_item,gendersType);
+        spinner2Adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        genderType.setAdapter(spinner2Adapter);
+        genderType.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                userGender=gendersType[position];
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                userGender = "";
+            }
+        });
     }
     public void OnContinueSignUpEvent(View view) {
         FirebaseApp.initializeApp(_3Register.this);
@@ -68,7 +85,7 @@ public class _3Register extends AppCompatActivity {
         ssn=userSSN.getText().toString();
         password=userPassword.getText().toString();
         age=userAge.getText().toString();
-        gender=userGender.getText().toString();
+        gender=userGender;
 
         if(name.equals("")||email.equals("")||phone.equals("")||ssn.equals("")||ssn.length()<10||
                 password.equals("")||age.equals("")||gender.equals("")){
@@ -80,7 +97,7 @@ public class _3Register extends AppCompatActivity {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()) {
-                                // Sign in success, update UI with the signed-in user's information
+                                // Sign in success, update UI with the signed-in user's ذ
                                 mAuth.getCurrentUser().sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
                                     @Override
                                     public void onComplete(@NonNull Task<Void> task) {
@@ -111,7 +128,7 @@ public class _3Register extends AppCompatActivity {
         userSSN=findViewById(R.id.newUserSSNField);
         userPassword=findViewById(R.id.newUserPasswordField);
         userAge=findViewById(R.id.ageField);
-        userGender=findViewById(R.id.genderField);
+
     }
     private void showIndeterminateProgressDialog() {
         progressDialog = new ProgressDialog(_3Register.this);

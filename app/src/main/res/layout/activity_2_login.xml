@@ -38,7 +38,8 @@
         android:layout_height="wrap_content"
         android:layout_margin="5dp"
         android:inputType="textEmailAddress"
-        android:textColor="#130400"
+        android:text=""
+        android:textColor="#000"
         android:textSize="6pt"
         app:bootstrapBrand="info"
         app:bootstrapSize="md" />

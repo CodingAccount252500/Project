@@ -150,6 +150,7 @@ public class _5Profile extends AppCompatActivity {
             Toast.makeText(this, "Smothing Worng !", Toast.LENGTH_SHORT).show();
         }
 
+
     }
     public String getFileExtention(Uri muri){
         ContentResolver mContentResolver=getContentResolver();
@@ -158,4 +159,8 @@ public class _5Profile extends AppCompatActivity {
 
     }
 
+    public void showmore(View view) {
+        Intent moveToMoreFields = new Intent(_5Profile.this,_52ProfileSecond.class);
+        startActivity(moveToMoreFields);
+    }
 }

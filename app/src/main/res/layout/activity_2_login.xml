@@ -59,7 +59,7 @@
         android:layout_marginTop="13dp"
 
         android:hint="password"
-        android:inputType="numberPassword"
+        android:inputType="textWebPassword"
         android:textColor="#130400"
         android:textSize="10pt"
         app:bootstrapBrand="info"

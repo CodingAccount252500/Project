@@ -38,5 +38,8 @@ public class VMUsers {
         IsSamePerson = isSamePerson;
         MedicalRecord = medicalRecord;
     }
+
+    public VMUsers() {
+    }
 }
 

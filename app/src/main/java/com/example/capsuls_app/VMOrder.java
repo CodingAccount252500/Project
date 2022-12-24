@@ -32,4 +32,7 @@ public class VMOrder {
         CartOfItems = cartOfItems;
         UserId=userId;
     }
+
+    public VMOrder() {
+    }
 }

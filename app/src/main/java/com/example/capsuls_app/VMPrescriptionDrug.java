@@ -15,4 +15,7 @@ public class VMPrescriptionDrug {
         Note = note;
         Quantity = quantity;
     }
+
+    public VMPrescriptionDrug() {
+    }
 }

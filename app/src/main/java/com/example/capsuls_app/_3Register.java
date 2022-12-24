@@ -79,12 +79,12 @@ public class _3Register extends AppCompatActivity {
         databaseReference = FirebaseDatabase.getInstance().getReference();
         String name,email,phone,ssn,password,age,gender;
         mAuth = FirebaseAuth.getInstance();
-        name=userName.getText().toString();
-        email=userEmail.getText().toString();
-        phone=userPhone.getText().toString();
-        ssn=userSSN.getText().toString();
-        password=userPassword.getText().toString();
-        age=userAge.getText().toString();
+        name=userName .getText().toString().trim();
+        email=userEmail .getText().toString().trim();
+        phone=userPhone .getText().toString().trim();
+        ssn=userSSN .getText().toString().trim();
+        password=userPassword .getText().toString().trim();
+        age=userAge .getText().toString().trim();
         gender=userGender;
 
         if(name.equals("")||email.equals("")||phone.equals("")||ssn.equals("")||ssn.length()<10||

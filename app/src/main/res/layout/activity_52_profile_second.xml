@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="10dp"
+    android:background="@drawable/dg4"
+    tools:context="._52ProfileSecond">
+    <TextView
+        android:id="@+id/txt_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Edit More Fields"
+        android:textSize="13pt"
+        android:textStyle="bold"
+        android:textColor="#130400"
+        android:layout_marginBottom="25dp"
+        android:gravity="center"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Email :"
+        android:layout_marginTop="10dp"
+        android:textSize="10pt"
+        android:textStyle="bold"
+
+        android:textColor="#EEEEEE"/>
+    <com.beardedhen.androidbootstrap.BootstrapEditText
+        android:id="@+id/newUserEmailField"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:bootstrapSize="md"
+        app:bootstrapBrand="info"
+        android:editable="false"
+        android:layout_marginTop="10dp"
+        android:inputType="textEmailAddress"
+        android:textColor="#130400"
+
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Social Security Number"
+        android:textSize="10pt"
+        android:textStyle="bold"
+        android:textColor="#EEEEEE"/>
+    <com.beardedhen.androidbootstrap.BootstrapEditText
+        android:id="@+id/newUserSSNField"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:bootstrapSize="md"
+        app:bootstrapBrand="info"
+        android:maxLength="10"
+        android:inputType="numberDecimal"
+        android:textColor="#130400"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Password"
+        android:textSize="10pt"
+        android:textStyle="bold"
+        android:textColor="#EEEEEE"/>
+    <com.beardedhen.androidbootstrap.BootstrapEditText
+        android:id="@+id/newUserPasswordField"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:bootstrapSize="md"
+        app:bootstrapBrand="info"
+        android:editable="false"
+        android:maxLength="10"
+        android:inputType="textWebPassword"
+        android:textColor="#130400"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="5dp"
+        android:text=" Type :"
+        android:textColor="#fff"
+        android:textStyle="bold"
+        android:textSize="9pt" />
+    <Spinner android:id="@+id/spn_trainType2"
+        android:layout_width="match_parent"
+        android:layout_marginTop="0dp"
+        android:layout_height="40dp"
+        android:background="#fff"
+        android:backgroundTint="#fff"
+        android:entries="@array/diseses"
+
+        />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Age"
+            android:textSize="10pt"
+            android:layout_marginLeft="65dp"
+            android:textStyle="bold"
+            android:textColor="#EEEEEE"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Gender"
+            android:textSize="10pt"
+            android:layout_marginLeft="135dp"
+            android:textStyle="bold"
+            android:textColor="#EEEEEE"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <com.beardedhen.androidbootstrap.BootstrapEditText
+            android:id="@+id/ageField"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            app:bootstrapSize="md"
+            android:layout_marginLeft="35dp"
+            app:bootstrapBrand="info"
+            android:maxLength="10"
+            android:inputType="numberDecimal"
+            android:textColor="#130400"
+            />
+
+
+        <Spinner
+            android:id="@+id/genderField"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:background="#fff"
+            android:backgroundTint="#fff"
+            android:layout_marginLeft="100dp"
+            android:entries="@array/gender"
+
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center"
+        android:layout_marginTop="15dp">
+
+        <com.beardedhen.androidbootstrap.BootstrapButton
+            android:id="@+id/continueRegistrationButton"
+            android:layout_width="145dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginLeft="18dp"
+            android:layout_marginTop="30dp"
+            android:backgroundTint="#130400"
+            android:onClick="back"
+            android:text="Back"
+            android:textStyle="bold|italic"
+            app:bootstrapSize="xl"
+            app:buttonMode="regular"
+            app:roundedCorners="true"
+            app:showOutline="false" />
+        <com.beardedhen.androidbootstrap.BootstrapButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#130400"
+            android:layout_marginLeft="18dp"
+            android:layout_gravity="center_horizontal"
+            android:onClick="OnContinueSave"
+            android:text="Save This Fields"
+            android:layout_marginTop="15sp"
+            android:textStyle="italic|bold"
+            app:bootstrapBrand="success"
+            app:bootstrapSize="xl"
+            app:buttonMode="regular"
+            app:roundedCorners="true"
+            app:showOutline="false" />
+
+    </LinearLayout>
+</LinearLayout>

@@ -17,4 +17,7 @@ public class VMDrug {
         ImageLink = imageLink;
         AvailableQtn = availableQtn;
     }
+
+    public VMDrug() {
+    }
 }

@@ -86,7 +86,8 @@
         android:textColor="#fff"
         android:textStyle="bold"
         android:textSize="9pt" />
-    <Spinner android:id="@+id/spn_trainType2"
+        <com.beardedhen.androidbootstrap.BootstrapEditText
+        android:id="@+id/spn_trainType2"
         android:layout_width="match_parent"
         android:layout_marginTop="0dp"
         android:layout_height="40dp"
@@ -133,7 +134,7 @@
             />
 
 
-        <Spinner
+        <com.beardedhen.androidbootstrap.BootstrapEditText
             android:id="@+id/genderField"
             android:layout_width="100dp"
             android:layout_height="wrap_content"

@@ -41,6 +41,7 @@ public class _5Profile extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_5_profile);
+        FirebaseApp.initializeApp(_5Profile.this);
         uploadImage=findViewById(R.id.uploadProfileImage);
         userImage=findViewById(R.id.profile_image);
         Name = findViewById(R.id.name);
@@ -73,7 +74,7 @@ public class _5Profile extends AppCompatActivity {
         pioPatient=Pio.getText().toString();
         namePatient=Name.getText().toString();
         //Fetch User Info By Object Id
-        FirebaseApp.initializeApp(_5Profile.this);
+
         DatabaseReference DbRef = FirebaseDatabase.getInstance().getReference().child("User");
         FirebaseStorage mfirebaseStorage=FirebaseStorage.getInstance();
         // Create a storage reference from our app
@@ -91,7 +92,9 @@ public class _5Profile extends AppCompatActivity {
                             DbRef.child(user.getKey()) .child("MedicalRecord").setValue(pioPatient);
                             DbRef.child(user.getKey()) .child("Name").setValue(namePatient);
                             Toast.makeText(getApplicationContext(), "Done", Toast.LENGTH_SHORT).show();
+                            _2Login.RecallUserInfo();
                             finish();
+
                         }else{
                             StorageReference fileUploadingReference = storageRef.child(System.currentTimeMillis()+"."+getFileExtention(imageUri));
                             fileUploadingReference.putFile(imageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
@@ -101,12 +104,14 @@ public class _5Profile extends AppCompatActivity {
                                     fileUploadingReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                                         @Override
                                         public void onSuccess(Uri uri) {
-                                            DbRef.child(user.getKey()) .child("ProfileImagePath").setValue(uri.toString());
-                                            DbRef.child(user.getKey()) .child("Phone").setValue(phones);
-                                            DbRef.child(user.getKey()) .child("MedicalRecord").setValue(pioPatient);
-                                            DbRef.child(user.getKey()) .child("Name").setValue(namePatient);
+                                            DbRef.child(_2Login.currentUserId) .child("ProfileImagePath").setValue(uri.toString());
+                                            DbRef.child(_2Login.currentUserId) .child("Phone").setValue(phones);
+                                            DbRef.child(_2Login.currentUserId) .child("MedicalRecord").setValue(pioPatient);
+                                            DbRef.child(_2Login.currentUserId) .child("Name").setValue(namePatient);
                                             Toast.makeText(getApplicationContext(), "Done", Toast.LENGTH_SHORT).show();
+                                            _2Login.RecallUserInfo();
                                             finish();
+
 
                                         }
                                     });

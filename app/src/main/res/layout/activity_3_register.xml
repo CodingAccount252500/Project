@@ -113,7 +113,7 @@
         app:bootstrapSize="md"
         app:bootstrapBrand="info"
         android:maxLength="10"
-        android:inputType="textWebPassword"
+        android:inputType="text"
         android:textColor="#130400"
         />
     <TextView
@@ -129,8 +129,10 @@
         android:layout_width="match_parent"
         android:layout_marginTop="0dp"
         android:layout_height="40dp"
+
         android:background="#fff"
         android:backgroundTint="#fff"
+
         android:entries="@array/diseses"
 
         />

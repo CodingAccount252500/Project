@@ -4,6 +4,8 @@ import android.app.ProgressDialog;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -11,6 +13,7 @@ import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 
@@ -50,6 +53,7 @@ public class _3Register extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 diseaseTypeString=categorySpinnerItems[position];
+                ((TextView)parent.getChildAt(0)).setTextColor(Color.parseColor("#000"));
             }
 
             @Override
@@ -65,6 +69,7 @@ public class _3Register extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 userGender=gendersType[position];
+                ((TextView)parent.getChildAt(0)).setTextColor(Color.parseColor("#000"));
             }
 
             @Override

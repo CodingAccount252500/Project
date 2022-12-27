@@ -114,7 +114,7 @@ public class _7NewOrder extends AppCompatActivity implements LocationListener {
             @Override
             public void onClick(View v) {
                 Intent getImageFromGallery=new Intent();
-                getImageFromGallery.setType("image/*");
+                getImageFromGallery.setType("application/*");
                 getImageFromGallery.setAction(Intent.ACTION_GET_CONTENT);
                 startActivityForResult(getImageFromGallery,1);
             }
@@ -126,9 +126,9 @@ public class _7NewOrder extends AppCompatActivity implements LocationListener {
         note =  editTextPio.getText().toString();
         FirebaseStorage mfirebaseStorage=FirebaseStorage.getInstance();
         StorageReference storageRef = mfirebaseStorage.getReference();
-        if(date.equals("")||note.equals("")||lat == 0 || lon == 0 || imageUri == null){
+        /*if(date.equals("")||note.equals("")||lat == 0 || lon == 0 || imageUri == null){
             Toast.makeText(_7NewOrder.this,"Please Fill All Required Data",Toast.LENGTH_LONG).show();
-        }else{
+        }else{*/
             StorageReference fileUploadingReference = storageRef.child(System.currentTimeMillis()+"."+getFileExtention(imageUri));
             fileUploadingReference.putFile(imageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                 @Override
@@ -156,7 +156,7 @@ public class _7NewOrder extends AppCompatActivity implements LocationListener {
                     Toast.makeText(_7NewOrder.this, "Upload Operation Failed ", Toast.LENGTH_SHORT).show();
                 }
             });
-        }
+        //}
 
     }
 
@@ -171,7 +171,7 @@ public class _7NewOrder extends AppCompatActivity implements LocationListener {
 
             }
         }else {
-            Toast.makeText(this, "Smothing Worng !", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Something Wrong !", Toast.LENGTH_SHORT).show();
         }
 
     }

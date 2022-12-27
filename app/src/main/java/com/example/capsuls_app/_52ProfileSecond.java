@@ -27,8 +27,8 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
 public class _52ProfileSecond extends AppCompatActivity {
-    public BootstrapEditText userEmail,userSSN,userPassword,userAge;
-    public Spinner diseaseType,genderType;
+    public BootstrapEditText userEmail,userSSN,userPassword,userAge,diseaseType,genderType;
+
     public ArrayAdapter spinnerAdapter,spinner2Adapter;
     public String diseaseTypeString,userGender;
     @Override
@@ -36,48 +36,32 @@ public class _52ProfileSecond extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_52_profile_second);
         DefineAllScreenObject();
-        diseaseType=findViewById(R.id.spn_trainType2);
-        genderType=findViewById(R.id.genderField);
-        String [] categorySpinnerItems=getResources().getStringArray(R.array.diseses);
-        String [] gendersType=getResources().getStringArray(R.array.gender);
-        spinnerAdapter =
-                new ArrayAdapter(_52ProfileSecond.this,android.R.layout.simple_spinner_item,categorySpinnerItems);
-        spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        diseaseType.setAdapter(spinnerAdapter);
-        diseaseType.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                diseaseTypeString=categorySpinnerItems[position];
-            }
 
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-                diseaseTypeString = "";
-            }
-        });
-        spinner2Adapter =
-                new ArrayAdapter(_52ProfileSecond.this,android.R.layout.simple_spinner_item,gendersType);
-        spinner2Adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        genderType.setAdapter(spinner2Adapter);
-        genderType.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                userGender=gendersType[position];
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-                userGender = "";
-            }
-        });
+        diseaseType.setText(_2Login.currentUser.Disease);
+        genderType.setText(_2Login.currentUser.Sex);
         userEmail.setText(_2Login.currentUser.Email);
         userSSN.setText(_2Login.currentUser.SSN);
         userPassword.setText(_2Login.currentUser.Password);
-
+        userAge.setText(_2Login.currentUser.Age);
 
     }
-    public void DefineAllScreenObject() {
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        _2Login.RecallUserInfo();
+        diseaseType.setText(_2Login.currentUser.Disease);
+        genderType.setText(_2Login.currentUser.Sex);
+        userEmail.setText(_2Login.currentUser.Email);
+        userSSN.setText(_2Login.currentUser.SSN);
+        userPassword.setText(_2Login.currentUser.Password);
+        userAge.setText(_2Login.currentUser.Age);
+
+    }
+
+    public void DefineAllScreenObject() {
+        diseaseType=findViewById(R.id.spn_trainType2);
+        genderType=findViewById(R.id.genderField);
         userEmail=findViewById(R.id.newUserEmailField);
         userSSN=findViewById(R.id.newUserSSNField);
         userPassword=findViewById(R.id.newUserPasswordField);

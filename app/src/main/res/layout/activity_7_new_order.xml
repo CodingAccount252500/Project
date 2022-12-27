@@ -12,7 +12,7 @@
         android:id="@+id/txt_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Update Profile"
+        android:text="Make Order"
         android:textSize="11pt"
         android:textStyle="bold"
         android:textColor="#ff6827"
@@ -23,20 +23,20 @@
         android:orientation="horizontal">
         <com.beardedhen.androidbootstrap.BootstrapThumbnail
             android:id="@+id/profile_image"
-            android:layout_width="145dp"
+            android:layout_width="85dp"
             android:src="@drawable/pdfflat"
-            android:layout_height="150dp"
+            android:layout_height="85dp"
             app:bootstrapBrand="info"
             app:hasBorder="true"
             />
 
         <com.beardedhen.androidbootstrap.BootstrapButton
             android:id="@+id/uploadProfileImage"
-            android:layout_width="185dp"
+            android:layout_width="235dp"
             android:layout_height="50dp"
-            android:layout_marginLeft="22dp"
+            android:layout_marginLeft="44dp"
             android:backgroundTint="#130400"
-            android:text="Upload Image"
+            android:text="Upload Image/File"
             android:layout_gravity="center"
             app:bootstrapSize="xl"
             app:buttonMode="regular"

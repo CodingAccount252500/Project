@@ -33,7 +33,7 @@ public class _2Login extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_2_login);
-
+        FirebaseApp.initializeApp(_2Login.this);
         DefineObject();
     }
     public void DefineObject(){
@@ -68,7 +68,7 @@ public class _2Login extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "Please Enter Email And SSN", Toast.LENGTH_SHORT).show();
         }else{
             //Continue Login Operation
-                FirebaseApp.initializeApp(_2Login.this);
+                //FirebaseApp.initializeApp(_2Login.this);
                 DatabaseReference DbRef = FirebaseDatabase.getInstance().getReference().child("User");
                 final Query AccountInfoQuery = DbRef.orderByChild("Email").equalTo(userEmail);
                 AccountInfoQuery.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -81,14 +81,8 @@ public class _2Login extends AppCompatActivity {
                             ) {
                                 currentUser=fetchedUser;
                                 currentUserId=center.getKey();
-
-                                if(currentUser.AccountTypeId.toLowerCase()=="user"){
-                                    MoveBetweenScreens(_2Login.this,_4Main_Activity.class);
-                                }else if(currentUser.AccountTypeId.toLowerCase()=="employee"){
-                                    //MoveBetweenScreens(_2Login.this,_14OrderDelivery.class);
-                                }else{
-                                    Toast.makeText(_2Login.this, "Error While Login", Toast.LENGTH_LONG).show();
-                                }
+                                Intent moveToCenterScreen=new Intent(_2Login.this,_4Main_Activity.class);
+                                startActivity(moveToCenterScreen);
 
                             }
                         }
@@ -97,10 +91,35 @@ public class _2Login extends AppCompatActivity {
 
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {
-
                         Toast.makeText(_2Login.this, error.getMessage(), Toast.LENGTH_LONG).show();
                     }
                 });
             }
+        }
+        public  static  void RecallUserInfo(){
+            //Continue Login Operation
+
+            DatabaseReference DbRef = FirebaseDatabase.getInstance().getReference().child("User");
+            final Query AccountInfoQuery = DbRef.orderByChild("Email").equalTo(currentUser.Email);
+            AccountInfoQuery.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    for (DataSnapshot center : snapshot.getChildren()) {
+                        VMUsers fetchedUser = center.getValue(VMUsers.class);
+                        if (fetchedUser.Email.equals(currentUser.Email)
+
+                        ) {
+                            currentUser=fetchedUser;
+                            currentUserId=center.getKey();
+                        }
+                    }
+
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+                    //Toast.makeText(getAp, error.getMessage(), Toast.LENGTH_LONG).show();
+                }
+            });
         }
     }

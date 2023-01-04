@@ -69,4 +69,9 @@ public class _4Main_Activity extends AppCompatActivity implements LocationListen
         lon=location.getLongitude();
 
     }
+
+    public void NerastPharma(View view) {
+        Intent moving=new Intent(_4Main_Activity.this,_13NearestPharm.class);
+        startActivity(moving);
+    }
 }

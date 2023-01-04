@@ -19,11 +19,11 @@
         />
     <GridLayout
         android:layout_width="match_parent"
-        android:layout_height="400dp"
+        android:layout_height="340dp"
         android:layout_marginTop="20dp"
         android:columnCount="2"
         android:rowCount="2"
-        android:padding="15pt">
+        android:padding="10pt">
 
         <com.beardedhen.androidbootstrap.BootstrapButton
             android:layout_width="wrap_content"
@@ -71,21 +71,37 @@
             android:layout_rowWeight="1"
             android:layout_columnWeight="1"
             />
+
         <com.beardedhen.androidbootstrap.BootstrapButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:bootstrapBrand="danger"
-            app:bootstrapSize="lg"
-            app:buttonMode="regular"
-            android:layout_margin="15dp"
-            app:showOutline="false"
-            app:roundedCorners="true"
-            android:onClick="Logout"
-            android:text="Logout"
-            android:layout_gravity="fill"
+            android:layout_row="0"
             android:layout_rowWeight="1"
             android:layout_columnWeight="1"
-            />
+            android:layout_gravity="fill"
+            android:layout_margin="15dp"
+            android:onClick="NerastPharma"
+            android:text="Nearst Pharmcy"
+            app:bootstrapBrand="secondary"
+            app:bootstrapSize="lg"
+            app:buttonMode="regular"
+            app:roundedCorners="true"
+            app:showOutline="false" />
 
     </GridLayout>
+    <com.beardedhen.androidbootstrap.BootstrapButton
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:bootstrapBrand="danger"
+        app:bootstrapSize="lg"
+        app:buttonMode="regular"
+        android:layout_margin="15dp"
+        app:showOutline="false"
+        app:roundedCorners="true"
+        android:onClick="Logout"
+        android:text="Logout"
+        android:layout_gravity="fill"
+        android:layout_rowWeight="1"
+        android:layout_columnWeight="1"
+        />
 </LinearLayout>

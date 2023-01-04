@@ -22,6 +22,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.Locale;
+
 
 public class _2Login extends AppCompatActivity {
     public TextView emailLabel,passwordLabel,signupLabel;
@@ -81,8 +83,13 @@ public class _2Login extends AppCompatActivity {
                             ) {
                                 currentUser=fetchedUser;
                                 currentUserId=center.getKey();
-                                Intent moveToCenterScreen=new Intent(_2Login.this,_4Main_Activity.class);
-                                startActivity(moveToCenterScreen);
+                                if(fetchedUser.AccountTypeId.equalsIgnoreCase("user")){
+                                    Intent moveToCenterScreen=new Intent(_2Login.this,_4Main_Activity.class);
+                                    startActivity(moveToCenterScreen);
+                                }else{
+                                    Intent moveToCenterScreen=new Intent(_2Login.this,_11PendingOrderList.class);
+                                    startActivity(moveToCenterScreen);
+                                }
 
                             }
                         }

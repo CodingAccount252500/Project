@@ -13,6 +13,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.google.firebase.FirebaseApp;
@@ -116,6 +117,7 @@ public class _8SelectDrugs extends AppCompatActivity {
             cartOfItems.put(selectedItemsName,1);
             pricing.put(selectedItemsName,selectedItemprice);
         }
+        Toast.makeText(this, "Saved", Toast.LENGTH_SHORT).show();
     }
 
     public void onMenuClicked(View view) {

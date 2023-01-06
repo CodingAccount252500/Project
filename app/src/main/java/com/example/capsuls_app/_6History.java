@@ -52,7 +52,7 @@ public class _6History extends AppCompatActivity {
         dialog= new AlertDialog.Builder(_6History.this)
                 .setIcon(android.R.drawable.ic_dialog_alert)
                 .setTitle("Oppps !")
-                .setMessage("There aren't any Latest Report")
+                .setMessage("There aren't any Latest Completed Order")
                 .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
                     @RequiresApi(api = Build.VERSION_CODES.O)
                     @Override
@@ -71,7 +71,7 @@ public class _6History extends AppCompatActivity {
         createNewDialog.setMessage("Please Wait ... ");
         createNewDialog.show();
         FirebaseApp.initializeApp(_6History.this);
-        FirebaseDatabase.getInstance().getReference().child("Order").addListenerForSingleValueEvent(new ValueEventListener() {
+        FirebaseDatabase.getInstance().getReference().child("Orders").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot child: snapshot.getChildren()) {

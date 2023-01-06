@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="10dp"
+    android:background="@color/white"
+    tools:context="._72ContintueOrder">
+    <TextView
+        android:id="@+id/txt_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Set Delivery Address"
+        android:textSize="11pt"
+        android:textStyle="bold"
+        android:textColor="#000"
+        android:layout_marginBottom="25dp"
+        android:gravity="center"/>
+    <TextView
+        android:id="@+id/nametv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Province"
+        android:layout_marginTop="15dp"
+        android:textSize="10pt"
+        android:textStyle="bold"
+        android:textColor="#000" />
+
+    <com.beardedhen.androidbootstrap.BootstrapEditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:bootstrapSize="md"
+        app:bootstrapBrand="info"
+        android:inputType="text"
+        android:textColor="#130400"
+
+        android:id="@+id/addressField1"
+        />
+    <TextView
+        android:layout_marginTop="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Region"
+        android:textSize="10pt"
+        android:textStyle="bold"
+
+        android:textColor="#000"/>
+
+    <com.beardedhen.androidbootstrap.BootstrapEditText
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:bootstrapSize="md"
+        app:bootstrapBrand="info"
+        android:layout_marginTop="10dp"
+        android:maxLength="10"
+        android:inputType="text"
+        android:textColor="#130400"
+        android:id="@+id/addressField2"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Street"
+        android:layout_marginTop="10dp"
+        android:textSize="10pt"
+        android:textStyle="bold"
+
+        android:textColor="#000"/>
+    <com.beardedhen.androidbootstrap.BootstrapEditText
+        android:id="@+id/addressField3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:bootstrapSize="md"
+        app:bootstrapBrand="info"
+        android:layout_marginTop="10dp"
+        android:inputType="text"
+        android:textColor="#130400"
+
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Building Number"
+        android:textSize="10pt"
+        android:textStyle="bold"
+        android:textColor="#000"/>
+    <com.beardedhen.androidbootstrap.BootstrapEditText
+        android:id="@+id/addressField4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:bootstrapSize="md"
+        app:bootstrapBrand="info"
+        android:maxLength="10"
+        android:inputType="numberDecimal"
+        android:textColor="#130400"
+        />
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="center"
+        android:layout_marginTop="15dp">
+
+        <com.beardedhen.androidbootstrap.BootstrapButton
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:backgroundTint="#130400"
+            android:layout_gravity="center_horizontal"
+            android:onClick="onContinue"
+            android:text="Continue"
+            android:layout_marginTop="15sp"
+            android:textStyle="italic|bold"
+            app:bootstrapBrand="success"
+            app:bootstrapSize="xl"
+            android:inputType="number"
+            app:buttonMode="regular"
+            app:roundedCorners="true"
+            app:showOutline="false" />
+
+    </LinearLayout>
+</LinearLayout>

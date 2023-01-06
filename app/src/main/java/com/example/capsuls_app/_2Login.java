@@ -35,7 +35,7 @@ public class _2Login extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_2_login);
-        FirebaseApp.initializeApp(_2Login.this);
+
         DefineObject();
     }
     public void DefineObject(){
@@ -62,12 +62,13 @@ public class _2Login extends AppCompatActivity {
     }
     public void OnLoginButtonClicked(View view) {
         //get the email and password then Authenticate user using firebase
+        FirebaseApp.initializeApp(_2Login.this);
         mAuth = FirebaseAuth.getInstance();
         String userEmail,userPassword;
         userEmail=emailField.getText().toString();
         userPassword=passwordField.getText().toString();
         if(userEmail.equals("")||userPassword.equals("")){
-            Toast.makeText(getApplicationContext(), "Please Enter Email And SSN", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "Please Enter Email And Password", Toast.LENGTH_SHORT).show();
         }else{
             //Continue Login Operation
                 //FirebaseApp.initializeApp(_2Login.this);
@@ -91,6 +92,8 @@ public class _2Login extends AppCompatActivity {
                                     startActivity(moveToCenterScreen);
                                 }
 
+                            }else{
+                                Toast.makeText(getApplicationContext(), "Login Error", Toast.LENGTH_SHORT).show();
                             }
                         }
 
@@ -105,7 +108,7 @@ public class _2Login extends AppCompatActivity {
         }
         public  static  void RecallUserInfo(){
             //Continue Login Operation
-
+            //FirebaseApp.initializeApp(_2Login.this);
             DatabaseReference DbRef = FirebaseDatabase.getInstance().getReference().child("User");
             final Query AccountInfoQuery = DbRef.orderByChild("Email").equalTo(currentUser.Email);
             AccountInfoQuery.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -125,7 +128,7 @@ public class _2Login extends AppCompatActivity {
 
                 @Override
                 public void onCancelled(@NonNull DatabaseError error) {
-                    //Toast.makeText(getAp, error.getMessage(), Toast.LENGTH_LONG).show();
+                    //Toast.makeText(, error.getMessage(), Toast.LENGTH_LONG).show();
                 }
             });
         }

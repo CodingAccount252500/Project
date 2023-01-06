@@ -26,14 +26,15 @@
                 android:src="@drawable/mde"
                 app:civ_border_color="#FF000000"
                 app:civ_border_width="1dp" />
+
             <TextView
                 android:id="@+id/ItemQuantityField"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="70"
                 android:textAlignment="center"
-                android:textSize="7pt"
-                android:textColor="@color/black"/>
+                android:textColor="@color/black"
+                android:textSize="7pt" />
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"

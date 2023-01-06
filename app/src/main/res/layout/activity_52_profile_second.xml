@@ -92,6 +92,7 @@
         android:layout_marginTop="0dp"
         android:layout_height="40dp"
         android:background="#fff"
+            android:textColor="@color/black"
         android:backgroundTint="#fff"
         android:entries="@array/diseses"
 
@@ -141,7 +142,7 @@
             android:background="#fff"
             android:backgroundTint="#fff"
             android:layout_marginLeft="100dp"
-            android:entries="@array/gender"
+            android:textColor="@color/black"
 
             />
     </LinearLayout>
@@ -171,10 +172,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:backgroundTint="#130400"
-            android:layout_marginLeft="18dp"
+            android:layout_marginLeft="28dp"
             android:layout_gravity="center_horizontal"
             android:onClick="OnContinueSave"
-            android:text="Save This Fields"
+            android:text="Save"
+
             android:layout_marginTop="15sp"
             android:textStyle="italic|bold"
             app:bootstrapBrand="success"

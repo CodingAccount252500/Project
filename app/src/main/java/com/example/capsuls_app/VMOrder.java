@@ -18,9 +18,10 @@ public class VMOrder {
     public String Date;
     public static HashMap<String,Integer> CartOfItems;
     public String UserId;
+    public String Address;
 
 
-    public VMOrder(double latitude, double longitude, String prescriptionDrugFile, boolean isCompleted, String notes, String driverId, String status, String date, HashMap<String,Integer> cartOfItems,String userId) {
+    public VMOrder(double latitude, double longitude, String prescriptionDrugFile, boolean isCompleted, String notes, String driverId, String status, String date, HashMap<String,Integer> cartOfItems,String userId,String address) {
         Latitude = latitude;
         Longitude = longitude;
         PrescriptionDrugFile = prescriptionDrugFile;
@@ -31,6 +32,7 @@ public class VMOrder {
         Date = date;
         CartOfItems = cartOfItems;
         UserId=userId;
+        Address=address;
     }
 
     public VMOrder() {

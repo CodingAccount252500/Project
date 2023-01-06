@@ -8,12 +8,18 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.firebase.FirebaseApp;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class _1SplashScreen extends AppCompatActivity {
     public CircleImageView logo;
     public TextView appName;
-
+    public FirebaseAuth mAuth;
+    public DatabaseReference databaseReference;
     private void SetAnimation(){
         logo.setY(-4200);
         appName.setX(-3500);
@@ -27,6 +33,11 @@ public class _1SplashScreen extends AppCompatActivity {
                 super.run();
                 try {
                     sleep(4000);
+                    VMDrug drug = new VMDrug("Strepsils","lozenges to relieve sore throat pain,",6.75,"",200);
+                    FirebaseApp.initializeApp(_1SplashScreen.this);
+                    mAuth = FirebaseAuth.getInstance();
+                    databaseReference = FirebaseDatabase.getInstance().getReference();
+                    databaseReference.child("Medicine").push().setValue(drug);
                     Intent intent = new Intent(getApplicationContext(),_2Login.class);
                     startActivity(intent);
                     finish();

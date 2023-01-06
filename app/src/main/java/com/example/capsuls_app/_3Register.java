@@ -53,7 +53,7 @@ public class _3Register extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 diseaseTypeString=categorySpinnerItems[position];
-                ((TextView)parent.getChildAt(0)).setTextColor(Color.parseColor("#000"));
+
             }
 
             @Override
@@ -69,7 +69,7 @@ public class _3Register extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 userGender=gendersType[position];
-                ((TextView)parent.getChildAt(0)).setTextColor(Color.parseColor("#000"));
+
             }
 
             @Override
@@ -97,35 +97,71 @@ public class _3Register extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "Please Fill The Required Data \uD83D\uDE4F", Toast.LENGTH_SHORT).show();
         }else{
             showIndeterminateProgressDialog();
-            mAuth.createUserWithEmailAndPassword(email,password)
-                    .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                        @Override
-                        public void onComplete(@NonNull Task<AuthResult> task) {
-                            if (task.isSuccessful()) {
-                                // Sign in success, update UI with the signed-in user's ذ
-                                mAuth.getCurrentUser().sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
-                                    @Override
-                                    public void onComplete(@NonNull Task<Void> task) {
-                                        if(task.isSuccessful()){
-                                            VMUsers person=new VMUsers(name,email,phone,0.0,0.0,ssn,false,"",gender,age,"user",password,diseaseTypeString,false,"");
-                                            databaseReference.child("User").push().setValue(person);
-                                            progressDialog.hide();
-                                            Toast.makeText(getApplicationContext(), "Please Verify Your email ✌️ ", Toast.LENGTH_SHORT).show();
-                                            finish();
+            if(checkPasswordPolicy(password)){
+                mAuth.createUserWithEmailAndPassword(email,password)
+                        .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                            @Override
+                            public void onComplete(@NonNull Task<AuthResult> task) {
+                                if (task.isSuccessful()) {
+                                    // Sign in success, update UI with the signed-in user's ذ
+                                    mAuth.getCurrentUser().sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
+                                        @Override
+                                        public void onComplete(@NonNull Task<Void> task) {
+                                            if(task.isSuccessful()){
+                                                VMUsers person=new VMUsers(name,email,phone,0.0,0.0,ssn,false,"",gender,age,"user",password,diseaseTypeString,false,"");
+                                                databaseReference.child("User").push().setValue(person);
+                                                progressDialog.hide();
+                                                Toast.makeText(getApplicationContext(), "Please Verify Your email ✌️ ", Toast.LENGTH_SHORT).show();
+                                                finish();
+                                            }
                                         }
-                                    }
-                                });
-                            } else {
-                                // If sign in fails, display a message to the user.
-                                progressDialog.hide();
-                                Log.w("Data", "createUserWithEmail:failure", task.getException());
-                                Toast.makeText(getApplicationContext(), "Authentication failed."+task.getException(),
-                                        Toast.LENGTH_LONG).show();
+                                    });
+                                } else {
+                                    // If sign in fails, display a message to the user.
+                                    progressDialog.hide();
+                                    Log.w("Data", "createUserWithEmail:failure", task.getException());
+                                    Toast.makeText(getApplicationContext(), "Authentication failed."+task.getException(),
+                                            Toast.LENGTH_LONG).show();
+                                }
                             }
-                        }
-                    });
+                        });
+            }else{
+                Toast.makeText(getApplicationContext(), "Please add at least one character and one number and one special \uD83D\uDE4F", Toast.LENGTH_SHORT).show();
+            }
+
         }
     }
+
+    private boolean checkPasswordPolicy(String password) {
+        boolean status = false;
+        char [] array = password.toCharArray();
+        int lower=0, upper=0, digits=0;
+
+        if (password.length() > 8)
+            status = true;
+
+        for ( int i = 0;  i < array.length; i++) {
+            if(Character.isDigit(array[i]))
+                digits++;
+            if(Character.isLowerCase(array[i]))
+                lower++;
+            if(Character.isUpperCase(array[i]))
+                upper++;
+        }
+
+        if ( !(lower  > 0 ))
+            status = false;
+
+        if ( !(upper  > 0 ))
+            status = false;
+
+        if ( !(digits > 0 ))
+            status = false;
+
+        return status;
+        //return false ;
+    }
+
     public void DefineAllScreenObject() {
         userName=findViewById(R.id.newUserNameField);
         userPhone=findViewById(R.id.newUserPhoneField);

@@ -46,14 +46,15 @@ public class _7NewOrder extends AppCompatActivity implements LocationListener {
     EditText               eText  ;
     public Uri             imageUri;
     public BootstrapButton uploadImage;
-    public BootstrapEditText editTextPio;
+    public BootstrapEditText editTextNotes;
     public static double lat,lon;
     public LocationManager myLocationManager;
-    ToggleButton toggle ;
+    //ToggleButton toggle ;
     String date,note;
-    boolean isLocationToggle;
+    //boolean isLocationToggle;
     public  static  VMOrder currentOrder;
-    public  static  String  createdOrderId;
+    public  static  String  createdOrderId , deliveryOption="";
+
 
     @SuppressLint("MissingPermission")
     private void getLocation() {
@@ -75,10 +76,9 @@ public class _7NewOrder extends AppCompatActivity implements LocationListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_7_new_order);
         eText=(EditText) findViewById(R.id.editTextGetDate);
-        toggle = (ToggleButton) findViewById(R.id.locationToggle);
-        editTextPio = findViewById(R.id.pioODescription);
+        editTextNotes = findViewById(R.id.pioODescription2);
         eText.setInputType(InputType.TYPE_NULL);
-        isLocationToggle=false;
+        //isLocationToggle=false;
         eText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -97,7 +97,7 @@ public class _7NewOrder extends AppCompatActivity implements LocationListener {
                 picker.show();
             }
         });
-        toggle.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        /*toggle.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
                     // The toggle is enabled
@@ -108,13 +108,13 @@ public class _7NewOrder extends AppCompatActivity implements LocationListener {
                     isLocationToggle=false;
                 }
             }
-        });
+        });*/
         uploadImage=findViewById(R.id.uploadProfileImage);
         uploadImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent getImageFromGallery=new Intent();
-                getImageFromGallery.setType("application/*");
+                getImageFromGallery.setType("image/*");
                 getImageFromGallery.setAction(Intent.ACTION_GET_CONTENT);
                 startActivityForResult(getImageFromGallery,1);
             }
@@ -123,7 +123,7 @@ public class _7NewOrder extends AppCompatActivity implements LocationListener {
 
     public void StartNewOrder(View view){
         date =  eText.getText().toString();
-        note =  editTextPio.getText().toString();
+        note =  editTextNotes.getText().toString();
         FirebaseStorage mfirebaseStorage=FirebaseStorage.getInstance();
         StorageReference storageRef = mfirebaseStorage.getReference();
         /*if(date.equals("")||note.equals("")||lat == 0 || lon == 0 || imageUri == null){
@@ -138,10 +138,17 @@ public class _7NewOrder extends AppCompatActivity implements LocationListener {
                         @Override
                         public void onSuccess(Uri uri) {
                               currentOrder = new VMOrder(lat,lon,uri.toString(),false,note,""
-                            ,"UnCompleted",date,new HashMap<String,Integer>(),_2Login.currentUserId);
+                            ,"UnCompleted",date,new HashMap<String,Integer>(),_2Login.currentUserId,"address");
                             Toast.makeText(getApplicationContext(), "Please Select Your Needs", Toast.LENGTH_SHORT).show();
-                            Intent goToSaveOrder=new Intent(getApplicationContext(),_8SelectDrugs.class);
-                            startActivity(goToSaveOrder);
+
+                            if(deliveryOption == "Direct"){
+                                Intent goToSaveOrder=new Intent(getApplicationContext(),_8SelectDrugs.class);
+                                startActivity(goToSaveOrder);
+                            }else{
+                                Intent goToSaveOrder=new Intent(getApplicationContext(),_72ContintueOrder.class);
+                                startActivity(goToSaveOrder);
+                            }
+
                         }
                     });
                 }
@@ -180,5 +187,15 @@ public class _7NewOrder extends AppCompatActivity implements LocationListener {
         MimeTypeMap mimeTypeMap= MimeTypeMap.getSingleton();
         return mimeTypeMap.getExtensionFromMimeType(mContentResolver.getType(muri));
 
+    }
+
+
+    public void changOption(View view) {
+        int currentId = view.getId();
+        if (currentId == R.id.direct){
+            deliveryOption = "Direct";
+        }else{
+            deliveryOption = "Delivery";
+        }
     }
 }

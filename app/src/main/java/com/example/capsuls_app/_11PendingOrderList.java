@@ -4,11 +4,14 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 
+import android.Manifest;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.location.Location;
 import android.net.Uri;
 import android.os.Build;
@@ -24,7 +27,9 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
@@ -55,7 +60,7 @@ public class _11PendingOrderList extends AppCompatActivity {
         dialog= new AlertDialog.Builder(_11PendingOrderList.this)
                 .setIcon(android.R.drawable.ic_dialog_alert)
                 .setTitle("Oppps !")
-                .setMessage("There aren't any Latest Report")
+                .setMessage("There aren't any Pending Orders")
                 .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
                     @RequiresApi(api = Build.VERSION_CODES.O)
                     @Override
@@ -74,18 +79,17 @@ public class _11PendingOrderList extends AppCompatActivity {
         createNewDialog.setMessage("Please Wait ... ");
         createNewDialog.show();
         FirebaseApp.initializeApp(_11PendingOrderList.this);
-        FirebaseDatabase.getInstance().getReference().child("Order").addListenerForSingleValueEvent(new ValueEventListener() {
+        FirebaseDatabase.getInstance().getReference().child("Orders").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot child: snapshot.getChildren()) {
                     VMOrder fetchedItem=child.getValue(VMOrder.class);
                     //LatLng cenLoc=new LatLng(fetchedItem.Latitude,fetchedItem.Longitude);
-                    if(!fetchedItem.IsCompleted &&
-                            fetchedItem.Status.equals("Completed")){
+
                         orderArrayList.add(fetchedItem);
                         orderDateArrayList.add(fetchedItem.Notes);
                         orderIDArrayList.add(child.getKey());
-                    }
+
                 }
                 if(orderArrayList.size()>0) {
                     availableItemsListAdapter=new ArrayAdapter
@@ -104,16 +108,37 @@ public class _11PendingOrderList extends AppCompatActivity {
                             textView2.setText(orderArrayList.get(position).Status);
                             button1.setVisibility(View.INVISIBLE);
                             LatLng cenLoc=new LatLng(orderArrayList.get(position).Latitude,orderArrayList.get(position).Longitude);
-                            textView2.setText("Distance :  "+getDistance(cenLoc,new LatLng(lat2,lon2))+" Km");
-                            button2.setText("Get Details");
+                            textView2.setText("Address : "+orderArrayList.get(position).Address);
+                            button2.setText("Set as Completed");
                             button2.setOnClickListener(new View.OnClickListener() {
                                 @Override
                                 public void onClick(View v) {
-                                    String uri = String.format(Locale.getDefault(), "http://maps.google.com/maps?q=loc:%f,%f"
-                                            , orderArrayList.get(position).Latitude
-                                            ,orderArrayList.get(position).Longitude);
-                                    Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(uri));
-                                    startActivity(intent);
+                                    FirebaseDatabase.getInstance().getReference().child("Orders").child(orderIDArrayList.get(position)).child("Status").setValue("Completed");
+                                }
+                            });
+                            button1.setText("Call Customer");
+                            button1.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    DatabaseReference DbRef = FirebaseDatabase.getInstance().getReference().child("User");
+                                    final Query AccountInfoQuery = DbRef.orderByChild("Email").equalTo(_2Login.currentUser.Email);
+                                    AccountInfoQuery.addListenerForSingleValueEvent(new ValueEventListener() {
+                                        @Override
+                                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                            for (DataSnapshot center : snapshot.getChildren()) {
+                                                VMUsers fetchedUser = center.getValue(VMUsers.class);
+                                                if (fetchedUser.Email.equals(_2Login.currentUser.Email)){
+                                                    callPhoneNumber(_2Login.currentUser.PhoneNumber);
+                                                }
+                                            }
+
+                                        }
+
+                                        @Override
+                                        public void onCancelled(@NonNull DatabaseError error) {
+                                            //Toast.makeText(, error.getMessage(), Toast.LENGTH_LONG).show();
+                                        }
+                                    });
                                 }
                             });
                             return view;
@@ -121,7 +146,8 @@ public class _11PendingOrderList extends AppCompatActivity {
                     };
                     availableItemsList.setAdapter(availableItemsListAdapter);
                     createNewDialog.dismiss();
-                    availableItemsListAdapter.notifyDataSetChanged();}else{
+                    availableItemsListAdapter.notifyDataSetChanged();}
+                else{
                     dialog.show();
                 }
 
@@ -133,7 +159,32 @@ public class _11PendingOrderList extends AppCompatActivity {
         });
     }
 
+    public void callPhoneNumber(String phone) {
+        try
+        {
+            if(Build.VERSION.SDK_INT > 22)
+            {
+                if (ActivityCompat.checkSelfPermission(this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+                    ActivityCompat.requestPermissions(_11PendingOrderList.this, new String[]{Manifest.permission.CALL_PHONE}, 101);
+                    return;
+                }
 
+                Intent callIntent = new Intent(Intent.ACTION_CALL);
+                callIntent.setData(Uri.parse("tel:" + phone));
+                startActivity(callIntent);
+
+            }
+            else {
+                Intent callIntent = new Intent(Intent.ACTION_CALL);
+                callIntent.setData(Uri.parse("tel:" + phone));
+                startActivity(callIntent);
+            }
+        }
+        catch (Exception ex)
+        {
+            ex.printStackTrace();
+        }
+    }
 
     public void onMenuClicked(View view) {
         Intent moving=new Intent(getApplicationContext(),_4Main_Activity.class);

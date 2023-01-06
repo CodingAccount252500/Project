@@ -40,6 +40,8 @@
         android:inputType="textEmailAddress"
         android:text=""
         android:textColor="#000"
+        android:hint="someone@host.com"
+
         android:textSize="6pt"
         app:bootstrapBrand="info"
         app:bootstrapSize="md" />
@@ -57,13 +59,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="13dp"
-
-        android:hint="password"
+        android:hint="*********************"
         android:inputType="textWebPassword"
-        android:textColor="#130400"
+        android:textColor="#000"
         android:textSize="10pt"
         app:bootstrapBrand="info"
         android:layout_margin="5dp"
+        android:textColorHint="#000"
         app:bootstrapSize="md" />
     <LinearLayout
         android:layout_width="match_parent"
@@ -76,6 +78,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:backgroundTint="#130400"
+
             android:baselineAligned="false"
             android:text="Login"
             android:onClick="OnLoginButtonClicked"

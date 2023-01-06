@@ -117,7 +117,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="left"
-                android:text="Look, I'm in a large well!"
+                android:textColorHint="@color/black"
+                android:textColor="@color/black"
+                android:hint="Write Caption about You"
                 />
         </com.beardedhen.androidbootstrap.BootstrapWell>
 
@@ -135,9 +137,10 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginLeft="30dp"
             android:layout_marginTop="30dp"
-            android:backgroundTint="#130400"
             android:onClick="UpdateProfile"
             android:text="Update"
+            android:textColor="#000"
+            android:textColorHint="@color/black"
             android:textStyle="bold|italic"
             app:bootstrapSize="xl"
             app:buttonMode="regular"

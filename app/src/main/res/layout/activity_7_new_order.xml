@@ -5,131 +5,203 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@color/white"
-    tools:context="._5Profile">
-    <TextView
-        android:id="@+id/txt_title"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Make Order"
-        android:textSize="11pt"
-        android:textStyle="bold"
-        android:textColor="#ff6827"
-        android:gravity="center"/>
+    tools:context="._7NewOrder">
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <com.beardedhen.androidbootstrap.BootstrapThumbnail
-            android:id="@+id/profile_image"
-            android:layout_width="85dp"
-            android:src="@drawable/pdfflat"
-            android:layout_height="85dp"
-            app:bootstrapBrand="info"
-            app:hasBorder="true"
-            />
 
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@color/white"
+       >
+        <TextView
+            android:id="@+id/txt_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Make Order"
+            android:textSize="11pt"
+            android:textStyle="bold"
+            android:textColor="#ff6827"
+            android:gravity="center"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <com.beardedhen.androidbootstrap.BootstrapThumbnail
+                android:id="@+id/profile_image"
+                android:layout_width="85dp"
+                android:src="@drawable/pdfflat"
+                android:layout_height="85dp"
+                app:bootstrapBrand="info"
+                app:hasBorder="true"
+                />
+
+            <com.beardedhen.androidbootstrap.BootstrapButton
+                android:id="@+id/uploadProfileImage"
+                android:layout_width="235dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="44dp"
+                android:backgroundTint="#130400"
+                android:text="Upload Image/File"
+                android:layout_gravity="center"
+                app:bootstrapSize="xl"
+                app:buttonMode="regular"
+                app:roundedCorners="true"
+                app:showOutline="false"
+                android:textStyle="bold|italic"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="0dp">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="9dp"
+                android:layout_marginLeft="5dp"
+                android:text="Delivery Date"
+                android:textStyle="bold"
+                android:textSize="9pt"
+                android:textColor="#130400" />
+
+            <EditText
+                android:id="@+id/editTextGetDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:ems="10"
+                android:textAlignment="center"
+                android:hint="Pick Delivery Date" />
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="9dp"
+                android:layout_marginLeft="5dp"
+                android:text="Note:"
+                android:textStyle="bold"
+                android:textSize="9pt"
+
+                android:textColor="#130400" />
+            <com.beardedhen.androidbootstrap.BootstrapWell
+                android:layout_width="match_parent"
+                android:layout_height="110dp"
+                android:layout_gravity="center"
+                android:layout_margin="4dp"
+                app:bootstrapSize="xl">
+
+                <com.beardedhen.androidbootstrap.BootstrapEditText
+                    android:id="@+id/pioODescription2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="left"
+                    android:textColor="#000"
+                    android:textColorHint="#000"
+                    android:hint="Look, I'm in a large well!"
+                    />
+            </com.beardedhen.androidbootstrap.BootstrapWell>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="0dp">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="9dp"
+                android:layout_marginLeft="5dp"
+                android:text="Phone Number"
+                android:textStyle="bold"
+                android:textSize="9pt"
+                android:textColor="#130400" />
+
+            <EditText
+                android:id="@+id/editTextGetPhoneNumber"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:ems="10"
+                android:textColor="#000"
+                android:textColorHint="#000"
+                android:textAlignment="center"
+                android:hint="078*******" />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="0dp">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="9dp"
+                android:layout_marginLeft="5dp"
+                android:text="Alternative Number"
+                android:textStyle="bold"
+                android:textSize="9pt"
+                android:textColor="#130400" />
+
+            <EditText
+                android:id="@+id/editTextGetAlternativeNumber"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:ems="10"
+                android:textColorHint="#000"
+                android:textColor="#000"
+                android:textAlignment="center"
+                android:hint="079*******" />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <RadioButton
+                    android:id="@+id/delevery"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:layout_marginLeft="90dp"
+                    android:theme="@style/RadioButton"
+                    android:onClick="changOption"
+                    android:text="Delivery"/>
+
+                <RadioButton
+                    android:id="@+id/direct"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:onClick="changOption"
+                    android:layout_marginLeft="50dp"
+                    android:text="Direct receipt"/>
+            </RadioGroup>
+
+        </LinearLayout>
         <com.beardedhen.androidbootstrap.BootstrapButton
-            android:id="@+id/uploadProfileImage"
-            android:layout_width="235dp"
-            android:layout_height="50dp"
-            android:layout_marginLeft="44dp"
+            android:id="@+id/continueRegistrationButton"
+            android:layout_width="290dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="30dp"
             android:backgroundTint="#130400"
-            android:text="Upload Image/File"
-            android:layout_gravity="center"
+            android:text="Next"
+            android:onClick="StartNewOrder"
+            android:textStyle="bold|italic"
             app:bootstrapSize="xl"
             app:buttonMode="regular"
             app:roundedCorners="true"
-            app:showOutline="false"
-            android:textStyle="bold|italic"/>
+            app:showOutline="false" />
     </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="0dp">
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="9dp"
-            android:layout_marginLeft="5dp"
-            android:text="Delivery Date"
-            android:textStyle="bold"
-            android:textSize="9pt"
-            android:textColor="#130400" />
-
-        <EditText
-            android:id="@+id/editTextGetDate"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:ems="10"
-            android:textAlignment="center"
-            android:hint="Pick Delivery Date" />
-
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="9dp"
-            android:layout_marginLeft="5dp"
-            android:text="Note:"
-            android:textStyle="bold"
-            android:textSize="9pt"
-
-            android:textColor="#130400" />
-        <com.beardedhen.androidbootstrap.BootstrapWell
-            android:layout_width="match_parent"
-            android:layout_height="110dp"
-            android:layout_gravity="center"
-            android:layout_margin="4dp"
-            app:bootstrapSize="xl">
-
-            <com.beardedhen.androidbootstrap.BootstrapEditText
-                android:id="@+id/pioODescription"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="left"
-                android:text="Look, I'm in a large well!"
-                />
-        </com.beardedhen.androidbootstrap.BootstrapWell>
-
-
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <ToggleButton
-            android:id="@+id/locationToggle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="10dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="40dp"
-            android:text="Get Current Location"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="40dp"
-            android:layout_marginLeft="10dp"
-            android:text="Get Current Location"
-            android:textSize="22dp" />
-    </LinearLayout>
-    <com.beardedhen.androidbootstrap.BootstrapButton
-        android:id="@+id/continueRegistrationButton"
-        android:layout_width="290dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="30dp"
-        android:backgroundTint="#130400"
-        android:text="Continue"
-        android:onClick="StartNewOrder"
-        android:textStyle="bold|italic"
-        app:bootstrapSize="xl"
-        app:buttonMode="regular"
-        app:roundedCorners="true"
-        app:showOutline="false" />
 </LinearLayout>

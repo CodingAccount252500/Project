@@ -19,6 +19,7 @@ public class VMOrder {
     public static HashMap<String,Integer> CartOfItems;
     public String UserId;
     public String Address;
+    public boolean IsPaid;
 
 
     public VMOrder(double latitude, double longitude, String prescriptionDrugFile, boolean isCompleted, String notes, String driverId, String status, String date, HashMap<String,Integer> cartOfItems,String userId,String address) {

@@ -66,10 +66,7 @@
             android:name="._12ResetPassword"
             android:exported="false" />
         <activity
-            android:name="._9SaveOrder"
-            android:exported="false" />
-        <activity
-            android:name="._8SelectDrugs"
+            android:name="._8SelectPayment"
             android:exported="false" />
         <activity
             android:name="._7NewOrder"

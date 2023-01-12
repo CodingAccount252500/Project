@@ -8,8 +8,6 @@ import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.content.ContentResolver;
 import android.content.Intent;
-import android.location.Address;
-import android.location.Geocoder;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
@@ -18,28 +16,21 @@ import android.os.Bundle;
 import android.text.InputType;
 import android.view.View;
 import android.webkit.MimeTypeMap;
-import android.widget.CompoundButton;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Toast;
-import android.widget.ToggleButton;
 
 import com.beardedhen.androidbootstrap.BootstrapButton;
 import com.beardedhen.androidbootstrap.BootstrapEditText;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
-import java.util.List;
-import java.util.Locale;
 
 public class _7NewOrder extends AppCompatActivity implements LocationListener {
     DatePickerDialog       picker ;
@@ -138,16 +129,16 @@ public class _7NewOrder extends AppCompatActivity implements LocationListener {
                         @Override
                         public void onSuccess(Uri uri) {
                               currentOrder = new VMOrder(lat,lon,uri.toString(),false,note,""
-                            ,"UnCompleted",date,new HashMap<String,Integer>(),_2Login.currentUserId,"address");
-                            Toast.makeText(getApplicationContext(), "Please Select Your Needs", Toast.LENGTH_SHORT).show();
+                            ,"UnCompleted",date,new HashMap<String,Integer>(),_2Login.currentUserId,"Direct Receive");
+                            //Toast.makeText(getApplicationContext(), "Please Select Your Needs", Toast.LENGTH_SHORT).show();
 
+                            Intent goToSaveOrder;
                             if(deliveryOption == "Direct"){
-                                Intent goToSaveOrder=new Intent(getApplicationContext(),_8SelectDrugs.class);
-                                startActivity(goToSaveOrder);
+                                goToSaveOrder = new Intent(getApplicationContext(), _8SelectPayment.class);
                             }else{
-                                Intent goToSaveOrder=new Intent(getApplicationContext(),_72ContintueOrder.class);
-                                startActivity(goToSaveOrder);
+                                goToSaveOrder = new Intent(getApplicationContext(), _72ContintueOrder.class);
                             }
+                            startActivity(goToSaveOrder);
 
                         }
                     });

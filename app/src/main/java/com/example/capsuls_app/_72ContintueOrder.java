@@ -41,7 +41,7 @@ public class _72ContintueOrder extends AppCompatActivity {
             Toast.makeText(this, "Please Fill All Fields ", Toast.LENGTH_SHORT).show();
         }else{
             _7NewOrder.currentOrder.Address = fullAddress;
-            Intent goToSaveOrder=new Intent(getApplicationContext(),_8SelectDrugs.class);
+            Intent goToSaveOrder=new Intent(getApplicationContext(), _8SelectPayment.class);
             startActivity(goToSaveOrder);
 
         }

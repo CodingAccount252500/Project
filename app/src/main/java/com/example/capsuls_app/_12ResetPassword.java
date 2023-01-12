@@ -12,6 +12,7 @@ import android.widget.Toast;
 import com.beardedhen.androidbootstrap.BootstrapEditText;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -31,20 +32,21 @@ public class _12ResetPassword extends AppCompatActivity {
 
     public void  OnContinueEvent(View view){
         if(userEmail.getText().toString().equals("")){
-            Toast.makeText(getApplicationContext(),"Fill your email" , Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(),"Fill your email It's required" , Toast.LENGTH_SHORT).show();
         }
         else {
+            FirebaseApp.initializeApp(_12ResetPassword.this);
             firebaseAuth.sendPasswordResetEmail(userEmail.getText().toString()).addOnCompleteListener(new OnCompleteListener<Void>() {
                 @Override
                 public void onComplete(@NonNull Task<Void> task) {
                     if(task.isSuccessful()){
 
-                        Toast.makeText(getApplicationContext(),"Check For your E-mail" , Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(),"Check For your E-mail" , Toast.LENGTH_LONG).show();
                         finish();
                         startActivity(new Intent(_12ResetPassword.this,_2Login.class));
 
                     }else {
-                        Toast.makeText(getApplicationContext(),"Error with your email" , Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(),"Wrong Email" , Toast.LENGTH_LONG).show();
 
 
                     }

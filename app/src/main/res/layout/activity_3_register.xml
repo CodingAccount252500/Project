@@ -19,26 +19,57 @@
         android:textColor="#130400"
         android:layout_marginBottom="25dp"
         android:gravity="center"/>
-    <TextView
-        android:id="@+id/nametv"
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:orientation="horizontal">
+           <TextView
+               android:id="@+id/nametv"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="First Name"
+               android:layout_marginTop="15dp"
+               android:textSize="10pt"
+               android:textStyle="bold"
+               android:textColor="#EEEEEE" />
+           <TextView
+               android:id="@+id/nametv2"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="Last Name"
+               android:layout_marginLeft="135dp"
+               android:layout_marginTop="15dp"
+               android:textSize="10pt"
+               android:textStyle="bold"
+               android:textColor="#EEEEEE" />
+       </LinearLayout>
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Name"
-        android:layout_marginTop="15dp"
-        android:textSize="10pt"
-        android:textStyle="bold"
-        android:textColor="#EEEEEE" />
+        android:orientation="horizontal">
+        <com.beardedhen.androidbootstrap.BootstrapEditText
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            app:bootstrapSize="md"
+            app:bootstrapBrand="info"
+            android:inputType="text"
+            android:textColor="#130400"
 
-    <com.beardedhen.androidbootstrap.BootstrapEditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:bootstrapSize="md"
-        app:bootstrapBrand="info"
-        android:inputType="text"
-        android:textColor="#130400"
+            android:id="@+id/newUserNameField1"
+            />
+        <com.beardedhen.androidbootstrap.BootstrapEditText
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            app:bootstrapSize="md"
+            app:bootstrapBrand="info"
+            android:inputType="text"
+            android:textColor="#130400"
+            android:layout_marginLeft="120dp"
+            android:id="@+id/newUserNameField2"
+            />
+    </LinearLayout>
 
-        android:id="@+id/newUserNameField"
-        />
+
     <TextView
         android:layout_marginTop="5dp"
         android:layout_width="match_parent"

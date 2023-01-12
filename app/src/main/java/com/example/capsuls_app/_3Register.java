@@ -28,7 +28,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 
 public class _3Register extends AppCompatActivity {
-    public BootstrapEditText userName,userEmail,userPhone,userSSN,userPassword,userAge;
+    public BootstrapEditText userNameFirst,userNameLast,userEmail,userPhone,userSSN,userPassword,userAge;
     public FirebaseAuth mAuth;
     public DatabaseReference databaseReference;
     public ProgressDialog progressDialog;
@@ -84,7 +84,7 @@ public class _3Register extends AppCompatActivity {
         databaseReference = FirebaseDatabase.getInstance().getReference();
         String name,email,phone,ssn,password,age,gender;
         mAuth = FirebaseAuth.getInstance();
-        name=userName .getText().toString().trim();
+        name=userNameFirst .getText().toString().trim() + userNameLast.getText().toString().trim();
         email=userEmail .getText().toString().trim();
         phone=userPhone .getText().toString().trim();
         ssn=userSSN .getText().toString().trim();
@@ -95,7 +95,18 @@ public class _3Register extends AppCompatActivity {
         if(name.equals("")||email.equals("")||phone.equals("")||ssn.equals("")||ssn.length()<10||
                 password.equals("")||age.equals("")||gender.equals("")){
             Toast.makeText(getApplicationContext(), "Please Fill The Required Data \uD83D\uDE4F", Toast.LENGTH_SHORT).show();
-        }else{
+        }else if(checkPasswordPolicy(password)){
+            Toast.makeText(getApplicationContext(), "Password must contains of Lower and uppercase \n" +
+                    "number and special character \uD83D\uDE4F", Toast.LENGTH_SHORT).show();
+        }else if(CheckAge(age)){
+            Toast.makeText(getApplicationContext(), "Age Must me Less than 100 \uD83D\uDE4F", Toast.LENGTH_SHORT).show();
+        }else if(CheckPhoneNumber(phone)){
+            Toast.makeText(getApplicationContext(), "Please Use A Valid Phone Number \uD83D\uDE4F", Toast.LENGTH_SHORT).show();
+        }else if(checkEmail(email)){
+            Toast.makeText(getApplicationContext(), "Please Use A Valid Email Domain" +
+                    "Such as Gmail , Outlook , Hotmail \uD83D\uDE4F", Toast.LENGTH_SHORT).show();
+        }
+        else{
             showIndeterminateProgressDialog();
             if(checkPasswordPolicy(password)){
                 mAuth.createUserWithEmailAndPassword(email,password)
@@ -132,6 +143,29 @@ public class _3Register extends AppCompatActivity {
         }
     }
 
+
+    private boolean CheckAge(String age){
+        int realAge = Integer.getInteger(age);
+        return realAge<=100?true:false;
+    }
+
+    public boolean CheckPhoneNumber(String phone){
+        String SP = phone.substring(0,3);
+        if(SP.equals("078")||SP.equals("077")||SP.equals("079")){
+            return  true;
+        }else{
+            return  false;
+        }
+    }
+    private boolean checkEmail(String email){
+        String domain=email.substring(email.lastIndexOf("@"),email.lastIndexOf("."));
+        if(email.contains("@") &&( domain .equalsIgnoreCase("gmail")
+                || domain.equalsIgnoreCase("outlook")
+                || domain.equalsIgnoreCase("hotmail"))){
+            return  true;
+        }
+        return  false;
+    }
     private boolean checkPasswordPolicy(String password) {
         boolean status = false;
         char [] array = password.toCharArray();
@@ -163,7 +197,8 @@ public class _3Register extends AppCompatActivity {
     }
 
     public void DefineAllScreenObject() {
-        userName=findViewById(R.id.newUserNameField);
+        userNameFirst=findViewById(R.id.newUserNameField1);
+        userNameLast=findViewById(R.id.newUserNameField2);
         userPhone=findViewById(R.id.newUserPhoneField);
         userEmail=findViewById(R.id.newUserEmailField);
         userSSN=findViewById(R.id.newUserSSNField);

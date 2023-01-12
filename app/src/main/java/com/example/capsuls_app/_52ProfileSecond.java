@@ -36,7 +36,7 @@ public class _52ProfileSecond extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_52_profile_second);
         DefineAllScreenObject();
-
+        _2Login.RecallUserInfo();
         diseaseType.setText(_2Login.currentUser.Disease);
         genderType.setText(_2Login.currentUser.Sex);
         userEmail.setText(_2Login.currentUser.Email);

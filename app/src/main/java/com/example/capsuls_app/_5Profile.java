@@ -59,7 +59,15 @@ public class _5Profile extends AppCompatActivity {
         LoadMyAccountInfo();
         //requestWindowFeature(Window.FEATURE_NO_TITLE);
     }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        LoadMyAccountInfo();
+    }
+
     public  void LoadMyAccountInfo(){
+        _2Login.RecallUserInfo();
         if(_2Login.currentUser.ProfileImagePath.equals("")){
             userImage.setImageResource(R.drawable.man);
         }else{
@@ -92,7 +100,7 @@ public class _5Profile extends AppCompatActivity {
                             DbRef.child(user.getKey()) .child("MedicalRecord").setValue(pioPatient);
                             DbRef.child(user.getKey()) .child("Name").setValue(namePatient);
                             Toast.makeText(getApplicationContext(), "Done", Toast.LENGTH_SHORT).show();
-                            _2Login.RecallUserInfo();
+
                             finish();
 
                         }else{
@@ -109,7 +117,7 @@ public class _5Profile extends AppCompatActivity {
                                             DbRef.child(_2Login.currentUserId) .child("MedicalRecord").setValue(pioPatient);
                                             DbRef.child(_2Login.currentUserId) .child("Name").setValue(namePatient);
                                             Toast.makeText(getApplicationContext(), "Done", Toast.LENGTH_SHORT).show();
-                                            _2Login.RecallUserInfo();
+
                                             finish();
 
 

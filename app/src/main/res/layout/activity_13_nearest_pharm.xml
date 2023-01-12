@@ -12,7 +12,7 @@
         android:id="@+id/tilteOrderName4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Nearest Pharmacy"
+        android:text="Nearest Pharmacies"
         android:textSize="9pt"
         android:textAlignment="center"
         android:textColor="#ff6827"/>

@@ -28,7 +28,7 @@
 
         <com.beardedhen.androidbootstrap.BootstrapButton
             android:layout_width="140dp"
-            android:layout_height="wrap_content"
+            android:layout_height="70dp"
             android:layout_rowWeight="1"
             android:layout_columnWeight="1"
             android:layout_gravity="fill"
@@ -43,14 +43,14 @@
 
         <com.beardedhen.androidbootstrap.BootstrapButton
             android:layout_width="180dp"
-            android:layout_height="wrap_content"
+            android:layout_height="70dp"
             android:layout_row="0"
             android:layout_rowWeight="1"
             android:layout_columnWeight="1"
             android:layout_gravity="fill"
             android:layout_margin="15dp"
             android:onClick="NerastPharma"
-            android:text="Nearst Pharmcy"
+            android:text="Nearest Pharmacies"
             app:bootstrapBrand="secondary"
             app:bootstrapSize="lg"
             app:buttonMode="regular"
@@ -69,7 +69,7 @@
 
         <com.beardedhen.androidbootstrap.BootstrapButton
             android:layout_width="150dp"
-            android:layout_height="wrap_content"
+            android:layout_height="70dp"
             app:bootstrapBrand="primary"
             app:bootstrapSize="lg"
             app:buttonMode="regular"
@@ -84,7 +84,7 @@
             />
         <com.beardedhen.androidbootstrap.BootstrapButton
             android:layout_width="180dp"
-            android:layout_height="wrap_content"
+            android:layout_height="70dp"
             app:bootstrapBrand="warning"
             app:bootstrapSize="lg"
             app:buttonMode="regular"

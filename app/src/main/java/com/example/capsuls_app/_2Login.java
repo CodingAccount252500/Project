@@ -93,7 +93,7 @@ public class _2Login extends AppCompatActivity {
                                 }
 
                             }else{
-                                Toast.makeText(getApplicationContext(), "Login Error", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getApplicationContext(), "ًWrong Email or Password", Toast.LENGTH_SHORT).show();
                             }
                         }
 

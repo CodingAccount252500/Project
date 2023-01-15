@@ -189,7 +189,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
         <com.beardedhen.androidbootstrap.BootstrapEditText
-            android:id="@+id/ageField"
+            android:id="@+id/ageFieldforCreate"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             app:bootstrapSize="md"

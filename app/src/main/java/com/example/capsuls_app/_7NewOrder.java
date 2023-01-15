@@ -22,6 +22,7 @@ import android.widget.Toast;
 
 import com.beardedhen.androidbootstrap.BootstrapButton;
 import com.beardedhen.androidbootstrap.BootstrapEditText;
+import com.beardedhen.androidbootstrap.BootstrapThumbnail;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.storage.FirebaseStorage;
@@ -40,6 +41,7 @@ public class _7NewOrder extends AppCompatActivity implements LocationListener {
     public BootstrapEditText editTextNotes;
     public static double lat,lon;
     public LocationManager myLocationManager;
+    public BootstrapThumbnail uploadedImage;
     //ToggleButton toggle ;
     String date,note;
     //boolean isLocationToggle;
@@ -66,8 +68,9 @@ public class _7NewOrder extends AppCompatActivity implements LocationListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_7_new_order);
-        eText=(EditText) findViewById(R.id.editTextGetDate);
+        eText=findViewById(R.id.editTextGetDate);
         editTextNotes = findViewById(R.id.pioODescription2);
+        uploadedImage = findViewById(R.id.profile_image);
         eText.setInputType(InputType.TYPE_NULL);
         //isLocationToggle=false;
         eText.setOnClickListener(new View.OnClickListener() {
@@ -164,6 +167,7 @@ public class _7NewOrder extends AppCompatActivity implements LocationListener {
         if(requestCode==1 && resultCode==RESULT_OK && data.getData()!=null ){
             try {
                 imageUri=data.getData();
+                uploadedImage.setImageURI(imageUri);
                 //userImage.setImageURI(imageUri);
             }catch (Exception exception){
 

@@ -51,10 +51,6 @@ public class _2Login extends AppCompatActivity {
         startActivity(moveToCreateAccount);
     }
 
-    public void MoveBetweenScreens(Context packageContext, Class<?> cls){
-        Intent moveToCenterScreen=new Intent(packageContext,cls);
-        startActivity(moveToCenterScreen);
-    }
 
     public void OnResetClicked(View view) {
         Intent moveToCreateAccount=new Intent(_2Login.this, _12ResetPassword.class);
@@ -77,25 +73,33 @@ public class _2Login extends AppCompatActivity {
                 AccountInfoQuery.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        for (DataSnapshot center : snapshot.getChildren()) {
-                            VMUsers fetchedUser = center.getValue(VMUsers.class);
-                            if (fetchedUser.Email.equals(userEmail)
-                                    && fetchedUser.Password.equals(userPassword)
-                            ) {
-                                currentUser=fetchedUser;
-                                currentUserId=center.getKey();
-                                if(fetchedUser.AccountTypeId.equalsIgnoreCase("user")){
-                                    Intent moveToCenterScreen=new Intent(_2Login.this,_4Main_Activity.class);
-                                    startActivity(moveToCenterScreen);
-                                }else{
-                                    Intent moveToCenterScreen=new Intent(_2Login.this,_11PendingOrderList.class);
-                                    startActivity(moveToCenterScreen);
-                                }
+                        if(snapshot.getChildrenCount()>0){
 
-                            }else{
-                                Toast.makeText(getApplicationContext(), "ًWrong Email or Password", Toast.LENGTH_SHORT).show();
+                            for (DataSnapshot center : snapshot.getChildren()) {
+                                VMUsers fetchedUser = center.getValue(VMUsers.class);
+                                if (fetchedUser.Email.equals(userEmail)
+                                        && fetchedUser.Password.equals(userPassword)
+                                ){
+                                    currentUser=fetchedUser;
+                                    currentUserId=center.getKey();
+                                    Intent moveToCenterScreen;
+                                    if(fetchedUser.AccountTypeId.equalsIgnoreCase("user")){
+                                        moveToCenterScreen = new Intent(_2Login.this, _4Main_Activity.class);
+                                    }else{
+                                        moveToCenterScreen = new Intent(_2Login.this, _11PendingOrderList.class);
+                                    }
+                                    emailField.setText("");
+                                    passwordField.setText("");
+                                    startActivity(moveToCenterScreen);
+
+                                }else{
+                                    Toast.makeText(_2Login.this, "ًWrong Password Try Again ", Toast.LENGTH_LONG).show();
+                                }
                             }
+                        }else{
+                            Toast.makeText(_2Login.this, "ًWrong Email or The Used  Email not verified yet", Toast.LENGTH_LONG).show();
                         }
+
 
                     }
 

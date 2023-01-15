@@ -67,8 +67,9 @@ public class _8SelectPayment extends AppCompatActivity {
                                     .addOnSuccessListener(new OnSuccessListener<Void>() {
                                         @Override
                                         public void onSuccess(Void unused) {
+                                            loadingDialog.dismiss();
                                             Toast.makeText(getApplicationContext(), "Done", Toast.LENGTH_SHORT).show();
-                                            Intent goToSaveOrder=new Intent(getApplicationContext(),_4Main_Activity.class);
+                                            Intent goToSaveOrder=new Intent(_8SelectPayment.this,_4Main_Activity.class);
                                             startActivity(goToSaveOrder);
                                         }
                                     });
@@ -76,7 +77,7 @@ public class _8SelectPayment extends AppCompatActivity {
 
                         }else{
                             loadingDialog.dismiss();
-                            Toast.makeText(getApplicationContext(), "Failed", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(_8SelectPayment.this, "Failed", Toast.LENGTH_SHORT).show();
                         }
                     }
                 }
@@ -100,7 +101,7 @@ public class _8SelectPayment extends AppCompatActivity {
                     @Override
                     public void onSuccess(Void unused) {
                         Toast.makeText(getApplicationContext(), "Done", Toast.LENGTH_SHORT).show();
-                        Intent goToSaveOrder=new Intent(getApplicationContext(),_4Main_Activity.class);
+                        Intent goToSaveOrder=new Intent(_8SelectPayment.this,_4Main_Activity.class);
                         startActivity(goToSaveOrder);
                     }
                 });

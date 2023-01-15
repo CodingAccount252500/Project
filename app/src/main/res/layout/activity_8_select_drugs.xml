@@ -44,6 +44,7 @@
         app:bootstrapBrand="info"
         android:inputType="text"
         android:textColor="#130400"
+        android:maxLength="16"
         android:id="@+id/f1"
         />
     <TextView
@@ -64,6 +65,7 @@
         android:layout_marginTop="10dp"
         android:inputType="text"
         android:textColor="#130400"
+        android:maxLength="3"
         android:id="@+id/f2"
         />
     <TextView
@@ -83,6 +85,7 @@
         android:layout_marginTop="10dp"
         android:inputType="text"
         android:textColor="#130400"
+        android:maxLength="100"
 
         />
 

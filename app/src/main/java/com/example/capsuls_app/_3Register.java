@@ -40,9 +40,10 @@ public class _3Register extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         //requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_3_register);
-        DefineAllScreenObject();
+
         diseaseType=findViewById(R.id.spn_trainType2);
         genderType=findViewById(R.id.genderField);
+        DefineAllScreenObject();
         String [] categorySpinnerItems=getResources().getStringArray(R.array.diseses);
         String [] gendersType=getResources().getStringArray(R.array.gender);
         spinnerAdapter =
@@ -82,33 +83,33 @@ public class _3Register extends AppCompatActivity {
         FirebaseApp.initializeApp(_3Register.this);
         mAuth = FirebaseAuth.getInstance();
         databaseReference = FirebaseDatabase.getInstance().getReference();
+        //mAuth = FirebaseAuth.getInstance();
         String name,email,phone,ssn,password,age,gender;
-        mAuth = FirebaseAuth.getInstance();
-        name=userNameFirst .getText().toString().trim() + userNameLast.getText().toString().trim();
-        email=userEmail .getText().toString().trim();
-        phone=userPhone .getText().toString().trim();
-        ssn=userSSN .getText().toString().trim();
-        password=userPassword .getText().toString().trim();
-        age=userAge .getText().toString().trim();
+        name=userNameFirst.getText().toString().trim() + userNameLast.getText().toString().trim();
+        email=userEmail.getText().toString().trim();
+        phone=userPhone.getText().toString().trim();
+        ssn=userSSN.getText().toString().trim();
+        password=userPassword.getText().toString().trim();
+        age=userAge.getText().toString().trim();
         gender=userGender;
 
         if(name.equals("")||email.equals("")||phone.equals("")||ssn.equals("")||ssn.length()<10||
                 password.equals("")||age.equals("")||gender.equals("")){
-            Toast.makeText(getApplicationContext(), "Please Fill The Required Data \uD83D\uDE4F", Toast.LENGTH_SHORT).show();
-        }else if(checkPasswordPolicy(password)){
-            Toast.makeText(getApplicationContext(), "Password must contains of Lower and uppercase \n" +
-                    "number and special character \uD83D\uDE4F", Toast.LENGTH_SHORT).show();
-        }else if(CheckAge(age)){
-            Toast.makeText(getApplicationContext(), "Age Must me Less than 100 \uD83D\uDE4F", Toast.LENGTH_SHORT).show();
-        }else if(CheckPhoneNumber(phone)){
-            Toast.makeText(getApplicationContext(), "Please Use A Valid Phone Number \uD83D\uDE4F", Toast.LENGTH_SHORT).show();
-        }else if(checkEmail(email)){
+            Toast.makeText(getApplicationContext(), "Please Fill The Required Data \uD83D\uDE4F", Toast.LENGTH_LONG).show();
+        }else if(!CheckAge(userAge.getText().toString().trim())){
+            Toast.makeText(getApplicationContext(), "Age Must me Less than 100 \uD83D\uDE4F", Toast.LENGTH_LONG).show();
+        }else if(!CheckPhoneNumber(phone)){
+            Toast.makeText(getApplicationContext(), "Please Use A Valid Phone Number \uD83D\uDE4F", Toast.LENGTH_LONG).show();
+        }else if(!checkEmail(email)){
             Toast.makeText(getApplicationContext(), "Please Use A Valid Email Domain" +
-                    "Such as Gmail , Outlook , Hotmail \uD83D\uDE4F", Toast.LENGTH_SHORT).show();
+                    "Such as Gmail , Outlook , Hotmail \uD83D\uDE4F", Toast.LENGTH_LONG).show();
+        }
+        else if(!checkPasswordPolicy(password)){
+            Toast.makeText(getApplicationContext(), "Please add at least one character and one number and one special \uD83D\uDE4F", Toast.LENGTH_SHORT).show();
         }
         else{
             showIndeterminateProgressDialog();
-            if(checkPasswordPolicy(password)){
+
                 mAuth.createUserWithEmailAndPassword(email,password)
                         .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                             @Override
@@ -136,17 +137,16 @@ public class _3Register extends AppCompatActivity {
                                 }
                             }
                         });
-            }else{
-                Toast.makeText(getApplicationContext(), "Please add at least one character and one number and one special \uD83D\uDE4F", Toast.LENGTH_SHORT).show();
-            }
+
 
         }
     }
 
 
     private boolean CheckAge(String age){
-        int realAge = Integer.getInteger(age);
-        return realAge<=100?true:false;
+        Log.i("Test",age);
+        int realAge = Integer.parseInt(age);
+        return realAge <= 100;
     }
 
     public boolean CheckPhoneNumber(String phone){
@@ -158,7 +158,9 @@ public class _3Register extends AppCompatActivity {
         }
     }
     private boolean checkEmail(String email){
-        String domain=email.substring(email.lastIndexOf("@"),email.lastIndexOf("."));
+        String domain=email.substring(email.lastIndexOf("@")+1,email.lastIndexOf("."));
+        Log.i("Test",domain);
+        Log.i("Test",email.contains("@")+"");
         if(email.contains("@") &&( domain .equalsIgnoreCase("gmail")
                 || domain.equalsIgnoreCase("outlook")
                 || domain.equalsIgnoreCase("hotmail"))){
@@ -183,14 +185,20 @@ public class _3Register extends AppCompatActivity {
                 upper++;
         }
 
-        if ( !(lower  > 0 ))
+        if ( lower  == 0 ){
             status = false;
+        }
 
-        if ( !(upper  > 0 ))
-            status = false;
 
-        if ( !(digits > 0 ))
+        if ( upper  == 0 ){
             status = false;
+        }
+
+
+        if ( digits ==  0 ){
+            status = false;
+        }
+
 
         return status;
         //return false ;
@@ -203,7 +211,7 @@ public class _3Register extends AppCompatActivity {
         userEmail=findViewById(R.id.newUserEmailField);
         userSSN=findViewById(R.id.newUserSSNField);
         userPassword=findViewById(R.id.newUserPasswordField);
-        userAge=findViewById(R.id.ageField);
+        userAge=findViewById(R.id.ageFieldforCreate);
 
     }
     private void showIndeterminateProgressDialog() {

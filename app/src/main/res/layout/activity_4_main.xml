@@ -28,7 +28,7 @@
 
         <com.beardedhen.androidbootstrap.BootstrapButton
             android:layout_width="140dp"
-            android:layout_height="70dp"
+            android:layout_height="90dp"
             android:layout_rowWeight="1"
             android:layout_columnWeight="1"
             android:layout_gravity="fill"
@@ -43,7 +43,7 @@
 
         <com.beardedhen.androidbootstrap.BootstrapButton
             android:layout_width="180dp"
-            android:layout_height="70dp"
+            android:layout_height="90dp"
             android:layout_row="0"
             android:layout_rowWeight="1"
             android:layout_columnWeight="1"
@@ -69,7 +69,7 @@
 
         <com.beardedhen.androidbootstrap.BootstrapButton
             android:layout_width="150dp"
-            android:layout_height="70dp"
+            android:layout_height="90dp"
             app:bootstrapBrand="primary"
             app:bootstrapSize="lg"
             app:buttonMode="regular"
@@ -84,7 +84,7 @@
             />
         <com.beardedhen.androidbootstrap.BootstrapButton
             android:layout_width="180dp"
-            android:layout_height="70dp"
+            android:layout_height="90dp"
             app:bootstrapBrand="warning"
             app:bootstrapSize="lg"
             app:buttonMode="regular"

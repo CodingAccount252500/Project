@@ -41,7 +41,7 @@
         android:text=""
         android:textColor="#000"
         android:hint="someone@host.com"
-
+        android:textAlignment="center"
         android:textSize="6pt"
         app:bootstrapBrand="info"
         app:bootstrapSize="md" />
@@ -50,6 +50,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Password :"
+
         android:textColor="#EEEEEE"
         android:layout_margin="5dp"
         android:textSize="6pt"
@@ -59,7 +60,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="13dp"
-        android:hint="*********************"
+        android:hint="********"
+        android:textAlignment="center"
         android:inputType="textWebPassword"
         android:textColor="#000"
         android:textSize="10pt"

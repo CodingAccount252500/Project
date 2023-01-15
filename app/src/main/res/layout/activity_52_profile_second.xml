@@ -35,7 +35,7 @@
         android:layout_height="wrap_content"
         app:bootstrapSize="md"
         app:bootstrapBrand="info"
-        android:editable="false"
+        android:editable="true"
         android:layout_marginTop="10dp"
         android:inputType="textEmailAddress"
         android:textColor="#130400"
@@ -100,7 +100,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_marginTop="18dp">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -114,7 +115,7 @@
             android:layout_height="wrap_content"
             android:text="Gender"
             android:textSize="10pt"
-            android:layout_marginLeft="135dp"
+            android:layout_marginLeft="145dp"
             android:textStyle="bold"
             android:textColor="#EEEEEE"/>
     </LinearLayout>
@@ -127,7 +128,7 @@
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             app:bootstrapSize="md"
-            android:layout_marginLeft="35dp"
+            android:layout_marginLeft="45dp"
             app:bootstrapBrand="info"
             android:maxLength="10"
             android:inputType="numberDecimal"
@@ -151,15 +152,16 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_gravity="center"
-        android:layout_marginTop="15dp">
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="110dp">
 
         <com.beardedhen.androidbootstrap.BootstrapButton
             android:id="@+id/continueRegistrationButton"
-            android:layout_width="145dp"
+            android:layout_width="125dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginLeft="18dp"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="110dp"
             android:backgroundTint="#130400"
             android:onClick="back"
             android:text="Back"
@@ -169,10 +171,10 @@
             app:roundedCorners="true"
             app:showOutline="false" />
         <com.beardedhen.androidbootstrap.BootstrapButton
-            android:layout_width="wrap_content"
+            android:layout_width="125dp"
             android:layout_height="wrap_content"
             android:backgroundTint="#130400"
-            android:layout_marginLeft="28dp"
+            android:layout_marginLeft="35dp"
             android:layout_gravity="center_horizontal"
             android:onClick="OnContinueSave"
             android:text="Save"

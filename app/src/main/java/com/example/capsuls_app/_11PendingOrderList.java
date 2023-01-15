@@ -187,7 +187,7 @@ public class _11PendingOrderList extends AppCompatActivity {
     }
 
     public void onMenuClicked(View view) {
-        Intent moving=new Intent(getApplicationContext(),_4Main_Activity.class);
+        Intent moving=new Intent(getApplicationContext(),_2Login.class);
         startActivity(moving);
     }
 

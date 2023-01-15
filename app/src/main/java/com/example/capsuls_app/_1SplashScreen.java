@@ -33,11 +33,12 @@ public class _1SplashScreen extends AppCompatActivity {
                 super.run();
                 try {
                     sleep(4000);
-                    VMDrug drug = new VMDrug("Strepsils","lozenges to relieve sore throat pain,",6.75,"",200);
+                    /*VMPharma pharma = new VMPharma("Rasya Pharmacy","","Amman ",
+                            "065353461","Ali bani hassan",32.0272776,35.8419917,"Dr-Nuha Ayman");
                     FirebaseApp.initializeApp(_1SplashScreen.this);
                     mAuth = FirebaseAuth.getInstance();
                     databaseReference = FirebaseDatabase.getInstance().getReference();
-                    databaseReference.child("Medicine").push().setValue(drug);
+                    databaseReference.child("Pharma").push().setValue(pharma);*/
                     Intent intent = new Intent(getApplicationContext(),_2Login.class);
                     startActivity(intent);
                     finish();

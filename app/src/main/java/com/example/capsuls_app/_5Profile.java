@@ -31,12 +31,15 @@ import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class _5Profile extends AppCompatActivity {
     public ImageView userImage;
     public BootstrapEditText PhoneNumber,Name,Pio;
     public  String phones,namePatient,pioPatient;
     public Uri imageUri;
     public BootstrapButton uploadImage;
+    public CircleImageView circleImageView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,6 +50,7 @@ public class _5Profile extends AppCompatActivity {
         Name = findViewById(R.id.name);
         Pio  = findViewById(R.id.pioODescription);
         PhoneNumber=findViewById(R.id.phone);
+        circleImageView = findViewById(R.id.profile_image);
         uploadImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -154,7 +158,7 @@ public class _5Profile extends AppCompatActivity {
         if(requestCode==1 && resultCode==RESULT_OK && data.getData()!=null ){
             try {
                 imageUri=data.getData();
-                userImage.setImageURI(imageUri);
+                circleImageView.setImageURI(imageUri);
 
             }catch (Exception exception){
 

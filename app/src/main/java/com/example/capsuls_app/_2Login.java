@@ -13,7 +13,11 @@ import android.widget.Toast;
 
 
 import com.beardedhen.androidbootstrap.BootstrapEditText;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseApp;
+import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -68,46 +72,56 @@ public class _2Login extends AppCompatActivity {
         }else{
             //Continue Login Operation
                 //FirebaseApp.initializeApp(_2Login.this);
-                DatabaseReference DbRef = FirebaseDatabase.getInstance().getReference().child("User");
-                final Query AccountInfoQuery = DbRef.orderByChild("Email").equalTo(userEmail);
-                AccountInfoQuery.addListenerForSingleValueEvent(new ValueEventListener() {
+                mAuth.signInWithEmailAndPassword(userEmail,userPassword).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        if(snapshot.getChildrenCount()>0){
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        DatabaseReference DbRef = FirebaseDatabase.getInstance().getReference().child("User");
+                        final Query AccountInfoQuery = DbRef.orderByChild("Email").equalTo(userEmail);
+                        AccountInfoQuery.addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                if(snapshot.getChildrenCount()>0){
 
-                            for (DataSnapshot center : snapshot.getChildren()) {
-                                VMUsers fetchedUser = center.getValue(VMUsers.class);
-                                if (fetchedUser.Email.equals(userEmail)
-                                        && fetchedUser.Password.equals(userPassword)
-                                ){
-                                    currentUser=fetchedUser;
-                                    currentUserId=center.getKey();
-                                    Intent moveToCenterScreen;
-                                    if(fetchedUser.AccountTypeId.equalsIgnoreCase("user")){
-                                        moveToCenterScreen = new Intent(_2Login.this, _4Main_Activity.class);
-                                    }else{
-                                        moveToCenterScreen = new Intent(_2Login.this, _11PendingOrderList.class);
+                                    for (DataSnapshot center : snapshot.getChildren()) {
+                                        VMUsers fetchedUser = center.getValue(VMUsers.class);
+                                        if (fetchedUser.Email.equals(userEmail)
+                                        ){
+                                            currentUser=fetchedUser;
+                                            currentUserId=center.getKey();
+                                            Intent moveToCenterScreen;
+                                            if(fetchedUser.AccountTypeId.equalsIgnoreCase("user")){
+                                                moveToCenterScreen = new Intent(_2Login.this, _4Main_Activity.class);
+                                            }else{
+                                                moveToCenterScreen = new Intent(_2Login.this, _11PendingOrderList.class);
+                                            }
+                                            emailField.setText("");
+                                            passwordField.setText("");
+                                            startActivity(moveToCenterScreen);
+
+                                        }else{
+                                            Toast.makeText(_2Login.this, "ًWrong Password Try Again ", Toast.LENGTH_LONG).show();
+                                        }
                                     }
-                                    emailField.setText("");
-                                    passwordField.setText("");
-                                    startActivity(moveToCenterScreen);
-
                                 }else{
-                                    Toast.makeText(_2Login.this, "ًWrong Password Try Again ", Toast.LENGTH_LONG).show();
+                                    Toast.makeText(_2Login.this, "ًWrong Email or The Used  Email not verified yet", Toast.LENGTH_LONG).show();
                                 }
+
+
                             }
-                        }else{
-                            Toast.makeText(_2Login.this, "ًWrong Email or The Used  Email not verified yet", Toast.LENGTH_LONG).show();
-                        }
 
-
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {
+                                Toast.makeText(_2Login.this, error.getMessage(), Toast.LENGTH_LONG).show();
+                            }
+                        });
                     }
-
+                }).addOnFailureListener(new OnFailureListener() {
                     @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-                        Toast.makeText(_2Login.this, error.getMessage(), Toast.LENGTH_LONG).show();
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(_2Login.this, "ًWrong Email or The Used  Email not verified yet", Toast.LENGTH_LONG).show();
                     }
                 });
+
             }
         }
         public  static  void RecallUserInfo(){

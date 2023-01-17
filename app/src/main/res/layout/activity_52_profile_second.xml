@@ -35,7 +35,7 @@
         android:layout_height="wrap_content"
         app:bootstrapSize="md"
         app:bootstrapBrand="info"
-        android:editable="true"
+        android:editable="false"
         android:layout_marginTop="10dp"
         android:inputType="textEmailAddress"
         android:textColor="#130400"
@@ -92,7 +92,7 @@
         android:layout_marginTop="0dp"
         android:layout_height="40dp"
         android:background="#fff"
-            android:textColor="@color/black"
+        android:textColor="@color/black"
         android:backgroundTint="#fff"
         android:entries="@array/diseses"
 

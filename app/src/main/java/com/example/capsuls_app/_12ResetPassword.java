@@ -26,8 +26,10 @@ public class _12ResetPassword extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_12_reset_password);
         userEmail = findViewById(R.id.ResetEmailField);
+        FirebaseApp.initializeApp(_12ResetPassword.this);
         firebaseAuth= FirebaseAuth.getInstance();
         user=firebaseAuth.getCurrentUser();
+
     }
 
     public void  OnContinueEvent(View view){
@@ -35,7 +37,7 @@ public class _12ResetPassword extends AppCompatActivity {
             Toast.makeText(getApplicationContext(),"Fill your email It's required" , Toast.LENGTH_SHORT).show();
         }
         else {
-            FirebaseApp.initializeApp(_12ResetPassword.this);
+
             firebaseAuth.sendPasswordResetEmail(userEmail.getText().toString()).addOnCompleteListener(new OnCompleteListener<Void>() {
                 @Override
                 public void onComplete(@NonNull Task<Void> task) {

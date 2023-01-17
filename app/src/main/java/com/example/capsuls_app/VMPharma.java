@@ -24,4 +24,7 @@ public class VMPharma {
         this.longitude = longitude;
         this.responsiblePerson = responsiblePerson;
     }
+
+    public VMPharma() {
+    }
 }

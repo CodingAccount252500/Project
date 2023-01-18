@@ -69,6 +69,17 @@ public class _52ProfileSecond extends AppCompatActivity {
 
     }
 
+    protected void ReloadData() {
+        _2Login.RecallUserInfo();
+        diseaseType.setText(_2Login.currentUser.Disease);
+        genderType.setText(_2Login.currentUser.Sex);
+        userEmail.setText(_2Login.currentUser.Email);
+        userSSN.setText(_2Login.currentUser.SSN);
+        userPassword.setText(_2Login.currentUser.Password);
+        userAge.setText(_2Login.currentUser.Age);
+
+    }
+
     public void back(View view) {
         finish();
     }
@@ -94,6 +105,7 @@ public class _52ProfileSecond extends AppCompatActivity {
                             DbRef.child(user.getKey()) .child("SSN").setValue(userSSN.getText().toString());
                             DbRef.child(user.getKey()) .child("Age").setValue(userAge.getText().toString());
                             Toast.makeText(getApplicationContext(), "Done", Toast.LENGTH_SHORT).show();
+                            ReloadData();
                             finish();
 
                     }

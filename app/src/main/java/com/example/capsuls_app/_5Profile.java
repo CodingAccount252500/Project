@@ -104,7 +104,7 @@ public class _5Profile extends AppCompatActivity {
                             DbRef.child(user.getKey()) .child("MedicalRecord").setValue(pioPatient);
                             DbRef.child(user.getKey()) .child("Name").setValue(namePatient);
                             Toast.makeText(getApplicationContext(), "Done", Toast.LENGTH_SHORT).show();
-
+                            LoadMyAccountInfo();
                             finish();
 
                         }else{
@@ -121,7 +121,7 @@ public class _5Profile extends AppCompatActivity {
                                             DbRef.child(_2Login.currentUserId) .child("MedicalRecord").setValue(pioPatient);
                                             DbRef.child(_2Login.currentUserId) .child("Name").setValue(namePatient);
                                             Toast.makeText(getApplicationContext(), "Done", Toast.LENGTH_SHORT).show();
-
+                                            LoadMyAccountInfo();
                                             finish();
 
 

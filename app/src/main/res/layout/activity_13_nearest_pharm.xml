@@ -19,8 +19,8 @@
 
     <ListView
         android:id="@+id/orederDetailsListView4"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="match_parent"
+        android:layout_height="590dp"
         android:layout_margin="7dp"/>
     <Button
         android:id="@+id/buttonAssignButton4"

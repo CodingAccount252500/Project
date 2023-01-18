@@ -19,6 +19,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.google.firebase.FirebaseApp;
@@ -77,8 +78,7 @@ public class _6History extends AppCompatActivity {
                 for (DataSnapshot child: snapshot.getChildren()) {
                     VMOrder fetchedItem=child.getValue(VMOrder.class);
                     //LatLng cenLoc=new LatLng(fetchedItem.Latitude,fetchedItem.Longitude);
-                    if(!fetchedItem.IsCompleted &&
-                            fetchedItem.Status.equals("Completed")){
+                    if(!fetchedItem.IsCompleted){
                         orderArrayList.add(fetchedItem);
                         orderDateArrayList.add(fetchedItem.Notes);
                         orderIDArrayList.add(child.getKey());
@@ -111,13 +111,14 @@ public class _6History extends AppCompatActivity {
                                     startActivity(intent);
                                 }
                             });*/
-                            button2.setText("Get Details");
+                            button2.setText("Send Reminder");
                             button2.setOnClickListener(new View.OnClickListener() {
                                 @Override
                                 public void onClick(View v) {
-                                    Intent seeOrderDate=new Intent(_6History.this,_10OrderDetails.class);
+                                    /*Intent seeOrderDate=new Intent(_6History.this,_10OrderDetails.class);
                                     SelectedOrder=orderArrayList.get(position);
-                                    startActivity(seeOrderDate);
+                                    startActivity(seeOrderDate);*/
+                                    Toast.makeText(_6History.this, "Reminder Sent Successfully", Toast.LENGTH_SHORT).show();
                                 }
                             });
                             return view;

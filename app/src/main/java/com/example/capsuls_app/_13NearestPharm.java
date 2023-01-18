@@ -80,6 +80,8 @@ public class _13NearestPharm extends AppCompatActivity {
         FirebaseDatabase.getInstance().getReference().child("Pharma").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+                Log.i("showData","Data Changerd");
+                Log.i("showData",snapshot.getChildrenCount()+"");
                 for (DataSnapshot child: snapshot.getChildren()) {
                     VMPharma fetchedItem=child.getValue(VMPharma.class);
                     //LatLng cenLoc=new LatLng(fetchedItem.Latitude,fetchedItem.Longitude);
@@ -93,7 +95,8 @@ public class _13NearestPharm extends AppCompatActivity {
                 orderIDArrayList.add("");
                 orderArrayList.add(new VMPharma("Rasya Pharmacy","","Amman ",
                         "065353461","Ali bani hassan",32.0272776,35.8419917,"Dr-Nuha Ayman"));
-                if(orderArrayList.size()>0) {
+                if(orderArrayList.size() > 1) {
+                    Log.i("showData","Entered Data");
                     availableItemsListAdapter=new ArrayAdapter
                             (getApplicationContext(),R.layout.zlistdesign,R.id.textview1,orderDateArrayList){
                         @NonNull
@@ -103,14 +106,17 @@ public class _13NearestPharm extends AppCompatActivity {
                             CircleImageView imageView = view.findViewById(R.id.image);
                             //textview1 is filled using adapter
                             TextView textView2        = view.findViewById(R.id.textview2);
+                            TextView textView3        = view.findViewById(R.id.textview3);
                             Button button1            = view.findViewById(R.id.button1);
                             Button button2            = view.findViewById(R.id.button2);
 
                             imageView.setImageResource(R.drawable.mde);
                             textView2.setText(orderArrayList.get(position).Address);
                             button1.setVisibility(View.INVISIBLE);
+                            button2.setVisibility(View.INVISIBLE);
                             //LatLng cenLoc=new LatLng(orderArrayList.get(position).Latitude,orderArrayList.get(position).Longitude);
                             textView2.setText("Address : "+orderArrayList.get(position).Address);
+                            textView3.setText("Responsible Person :"+orderArrayList.get(position).responsiblePerson);
                             /*button2.setText("Set as Completed");
                             button2.setOnClickListener(new View.OnClickListener() {
                                 @Override
@@ -143,9 +149,11 @@ public class _13NearestPharm extends AppCompatActivity {
                                     });
                                 }
                             });*/
+                            Log.i("showData","Filled 1dd");
                             return view;
                         }
                     };
+                    Log.i("showData","Reached");
                     availableItemsList.setAdapter(availableItemsListAdapter);
                     createNewDialog.dismiss();
                     availableItemsListAdapter.notifyDataSetChanged();
@@ -153,7 +161,9 @@ public class _13NearestPharm extends AppCompatActivity {
                 else{
                     dialog.show();
                 }
-
+                availableItemsList.setAdapter(availableItemsListAdapter);
+                createNewDialog.dismiss();
+                availableItemsListAdapter.notifyDataSetChanged();
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {

@@ -93,6 +93,7 @@
             android:textColor="#130400"
             app:bootstrapBrand="info"
             app:bootstrapSize="xl"
+            android:maxLength="10"
 
             />
         <TextView

@@ -55,6 +55,15 @@
                 android:textColor="@color/black"
                 android:textSize="9pt" />
 
+            <TextView
+                android:id="@+id/textview3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="7dp"
+                android:text=""
+                android:textColor="@color/black"
+                android:textSize="9pt" />
+
             <Button
                 android:id="@+id/button1"
                 android:layout_width="match_parent"

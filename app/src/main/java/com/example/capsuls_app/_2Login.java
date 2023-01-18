@@ -33,7 +33,7 @@ public class _2Login extends AppCompatActivity {
     public TextView emailLabel,passwordLabel,signupLabel;
     public BootstrapEditText emailField,passwordField;
     private FirebaseAuth mAuth;
-    public static String currentUserId="";
+    public static String  currentUserId="";
     public static VMUsers currentUser;
     @Override
     protected void onCreate(Bundle savedInstanceState) {

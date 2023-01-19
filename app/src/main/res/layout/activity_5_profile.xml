@@ -85,7 +85,7 @@
             android:textColor="#130400" />
 
         <com.beardedhen.androidbootstrap.BootstrapEditText
-            android:id="@+id/phone"
+            android:id="@+id/phone2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"

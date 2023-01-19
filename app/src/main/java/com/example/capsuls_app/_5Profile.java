@@ -49,7 +49,7 @@ public class _5Profile extends AppCompatActivity {
         userImage=findViewById(R.id.profile_image);
         Name = findViewById(R.id.name);
         Pio  = findViewById(R.id.pioODescription);
-        PhoneNumber=findViewById(R.id.phone);
+        PhoneNumber=findViewById(R.id.phone2);
         circleImageView = findViewById(R.id.profile_image);
         uploadImage.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -100,9 +100,9 @@ public class _5Profile extends AppCompatActivity {
                     VMUsers fetchedItem = user.getValue(VMUsers.class);
                     if (fetchedItem.Email.equals(_2Login.currentUser.Email)) {
                         if(imageUri==null){
-                            DbRef.child(user.getKey()) .child("Phone").setValue(phones);
-                            DbRef.child(user.getKey()) .child("MedicalRecord").setValue(pioPatient);
-                            DbRef.child(user.getKey()) .child("Name").setValue(namePatient);
+                            DbRef.child(user.getKey()).child("PhoneNumber").setValue(phones);
+                            DbRef.child(user.getKey()).child("MedicalRecord").setValue(pioPatient);
+                            DbRef.child(user.getKey()).child("Name").setValue(namePatient);
                             Toast.makeText(getApplicationContext(), "Done", Toast.LENGTH_SHORT).show();
                             LoadMyAccountInfo();
                             finish();

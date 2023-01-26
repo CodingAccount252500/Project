@@ -7,13 +7,13 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="0dp"
-    android:background="@drawable/dg4"
+    android:background="@color/white"
     tools:context="._4Main_Activity">
     <com.beardedhen.androidbootstrap.BootstrapThumbnail
         android:layout_width="match_parent"
         android:layout_height="210dp"
         android:layout_margin="35dp"
-        android:src="@drawable/logo"
+        android:src="@drawable/download"
         app:bootstrapBrand="danger"
         app:hasBorder="true"
         />
@@ -51,7 +51,7 @@
             android:layout_margin="15dp"
             android:onClick="NerastPharma"
             android:text="Nearest Pharmacies"
-            app:bootstrapBrand="secondary"
+            app:bootstrapBrand="info"
             app:bootstrapSize="lg"
             app:buttonMode="regular"
             app:roundedCorners="true"

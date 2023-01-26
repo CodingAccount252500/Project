@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@drawable/dg4"
+    android:background="@color/white"
     android:padding="5dp"
     tools:context="._2Login">
     <de.hdodenhof.circleimageview.CircleImageView
@@ -30,7 +30,7 @@
         android:layout_margin="5dp"
         android:textSize="6pt"
         android:textStyle="bold"
-        android:textColor="#EEEEEE"/>
+        android:textColor="#000"/>
     <com.beardedhen.androidbootstrap.BootstrapEditText
         android:id="@+id/emailTextField"
         android:textColorHint="@color/black"
@@ -51,7 +51,7 @@
         android:layout_height="wrap_content"
         android:text="Password :"
 
-        android:textColor="#EEEEEE"
+        android:textColor="#000"
         android:layout_margin="5dp"
         android:textSize="6pt"
         android:textStyle="bold"/>

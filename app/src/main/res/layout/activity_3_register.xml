@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="10dp"
-    android:background="@drawable/dg4"
+    android:background="@color/white"
     tools:context="._3Register">
     <TextView
         android:id="@+id/txt_title"
@@ -31,7 +31,7 @@
                android:layout_marginTop="15dp"
                android:textSize="10pt"
                android:textStyle="bold"
-               android:textColor="#EEEEEE" />
+               android:textColor="#000" />
            <TextView
                android:id="@+id/nametv2"
                android:layout_width="wrap_content"
@@ -41,7 +41,7 @@
                android:layout_marginTop="15dp"
                android:textSize="10pt"
                android:textStyle="bold"
-               android:textColor="#EEEEEE" />
+               android:textColor="#000" />
        </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -78,7 +78,7 @@
         android:textSize="10pt"
         android:textStyle="bold"
 
-        android:textColor="#EEEEEE"/>
+        android:textColor="#000"/>
 
     <com.beardedhen.androidbootstrap.BootstrapEditText
 
@@ -100,7 +100,7 @@
         android:textSize="10pt"
         android:textStyle="bold"
 
-        android:textColor="#EEEEEE"/>
+        android:textColor="#000"/>
     <com.beardedhen.androidbootstrap.BootstrapEditText
         android:id="@+id/newUserEmailField"
         android:layout_width="match_parent"
@@ -118,7 +118,7 @@
         android:text="Social Security Number"
         android:textSize="10pt"
         android:textStyle="bold"
-        android:textColor="#EEEEEE"/>
+        android:textColor="#000"/>
     <com.beardedhen.androidbootstrap.BootstrapEditText
         android:id="@+id/newUserSSNField"
         android:layout_width="match_parent"
@@ -136,7 +136,7 @@
         android:text="Password"
         android:textSize="10pt"
         android:textStyle="bold"
-        android:textColor="#EEEEEE"/>
+        android:textColor="#000"/>
     <com.beardedhen.androidbootstrap.BootstrapEditText
         android:id="@+id/newUserPasswordField"
         android:layout_width="match_parent"
@@ -153,7 +153,7 @@
         android:layout_marginTop="20dp"
         android:layout_marginLeft="5dp"
         android:text=" Type :"
-        android:textColor="#fff"
+        android:textColor="#000"
         android:textStyle="bold"
         android:textSize="9pt" />
     <Spinner android:id="@+id/spn_trainType2"
@@ -174,7 +174,7 @@
             android:textSize="10pt"
             android:layout_marginLeft="65dp"
             android:textStyle="bold"
-            android:textColor="#EEEEEE"/>
+            android:textColor="#000"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -182,7 +182,7 @@
             android:textSize="10pt"
             android:layout_marginLeft="135dp"
             android:textStyle="bold"
-            android:textColor="#EEEEEE"/>
+            android:textColor="#000"/>
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
